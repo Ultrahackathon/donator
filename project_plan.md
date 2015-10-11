@@ -12,15 +12,18 @@ Business model
 
 Why it is better than competitors/why it is unique?
 How your idea will (or does) convert into being economically viable. What do you sell? To whom?
+
 Improvements
 
 Which improvements were done during Ultrahack?
 What are planned improvements after Ultrahack?
 Did you/how did you pivoted during the Ultrahack?
+
 Technology & Product
 
 Which tech/API's were used with it and how?
 How did you benefit from Ultrahack-coaching or new talent recruits during Ultrahack?
+
 Background
 
 Introduce your team and your teams' background.
