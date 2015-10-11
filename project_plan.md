@@ -2,9 +2,12 @@ Make sure your presentation is crystal clear to anyone and everyone. Here is a t
 
 ### Problem
 
-Tell us a story that addresses the problem your product or service solves. Avoid using buzzwords and tech talk when you tell your story. Keep it simple and realistic.
+Brick-and-mortar stores are lacking visitors as more and more business is handled online. These stores are part of the city's identity, and we don't want them to die. Cities have a lot of other interesting places (POI), but are very poor at marketing and promoting, especially in digital channels. The general problem for users is lack of knowledge POI's existence and motivation to actually visit them in first place.
+
 
 ### Solution
+
+Our service connects users (customers) and business who has similar interests towards charity. Service allows business to attract visitors by promising a donation to charity. For this to happen, user must visit physically a location defined by business. 
 
 Donator is an application which lets users find nearby interesting locations and brick-and-mortar businesses. Application user may visit these places and gather donations to charities by checking-in in the location. This check-in generates a pre-defined donation from the business to a charity and additionally displays a message to the user. The user can then contribute to that donation if they wish.
 
