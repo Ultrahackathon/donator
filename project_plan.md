@@ -13,6 +13,9 @@ Business model
 Why it is better than competitors/why it is unique?
 How your idea will (or does) convert into being economically viable. What do you sell? To whom?
 
+This is a non-profit work. If we need some money for running this, we can take
+little cut from donations.
+
 Improvements
 
 Which improvements were done during Ultrahack?
@@ -22,8 +25,17 @@ Did you/how did you pivoted during the Ultrahack?
 Technology & Product
 
 Which tech/API's were used with it and how?
+
+We decided to use Elixir at our backend. For database we used MongoDB. With this
+combination we expect to get best ability for scaling. We use Facebook, Twitter,
+Google and GtiHub APIs for authentication. Foursquare APIs we used for
+locations.
+
 How did you benefit from Ultrahack-coaching or new talent recruits during Ultrahack?
 
 Background
 
 Introduce your team and your teams' background.
+
+Niko Kauppila
+I'm developer who has worked mostly with backends.
