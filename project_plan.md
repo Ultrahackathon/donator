@@ -34,10 +34,11 @@ Technology & Product
 
 Which tech/API's were used with it and how?
 
-We decided to use Elixir at our backend. For database we used MongoDB. With this
-combination we expect to get best ability for scaling. We use Facebook, Twitter,
-Google and GtiHub APIs for authentication. Foursquare APIs we used for
-locations.
+We're creating a mobile application which is built with React and PhoneGap.
+This application has an Elixir backend with MongoDB as our data storage solution.
+With this combination we are looking at the best ability for scaling to the applications needs.
+We use Facebook, Twitter, Google and GitHub APIs for authentication of users.
+Foursquare APIs are used for locations and check-ins.
 
 How did you benefit from Ultrahack-coaching or new talent recruits during Ultrahack?
 
