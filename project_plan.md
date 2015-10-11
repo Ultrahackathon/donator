@@ -6,7 +6,15 @@ Tell us a story that addresses the problem your product or service solves. Avoid
 
 Solution
 
-Describe your software. What can be done with it?
+donator is an application which lets users find nearby interesting locations and/or brick-and-mortar-businesses, visit these places and gather donations to charities by checking-in there.
+The check-in generates a donation from the business to a charity and additionally displays a message to the user from the business. The user can then add to that donation from their own account.
+Businesses may choose any locations from which check-ins generate a donation, instead of choosing the office building they might choose a landmark in the city.
+Organisation can create donation tracks, which involve multiple locations and when a user follows the track the regular donations would be increased by a multiplier.
+This way cities could create tourism tracks to show off their most beautiful spots and generate donations for charities.
+Monthly leaderboards keep track of people who gathered the most donations and businesses with the most activity, which leads to users competing to get higher amounts of donations gathered.
+
+<!-- - Businesses get good PR value from donating to charities
+- Businesses get new customers and more revenue from people visiting their stores -->
 
 Business model
 
