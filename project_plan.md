@@ -47,3 +47,6 @@ Introduce your team and your teams' background.
 
 Niko Kauppila
 I'm developer who has worked mostly with backends.
+
+Timo Sand
+I'm a full-stack developer with a passion for good UX
