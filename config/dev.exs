@@ -34,9 +34,9 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 config :donator, Donator.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  adapter: Mongo.Ecto,
+  username: "mongodb",
+  password: "mongodb",
   database: "donator_dev",
   hostname: "localhost",
   pool_size: 10

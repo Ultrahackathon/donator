@@ -11,9 +11,8 @@ config :logger, level: :warn
 
 # Configure your database
 config :donator, Donator.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  adapter: Mongo.Ecto,
+  username: "mongodb",
+  password: "mongodb",
   database: "donator_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+  hostname: "localhost"
