@@ -1,0 +1,23 @@
+{
+  "name": "donator",
+  "version": "0.0.1",
+  "description": "Authors: Niko Kauppila, Antti Forsell, Jani Koivukoski, Timo Sand",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^1.12.2"
+  },
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ultrahackathon/donator.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ultrahackathon/donator/issues"
+  },
+  "homepage": "https://github.com/Ultrahackathon/donator#readme"
+}
