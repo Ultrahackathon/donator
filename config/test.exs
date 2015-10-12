@@ -17,6 +17,6 @@ config :donator, Donator.Repo,
   database: "donator_test",
   hostname: "localhost"
 
-config :jwt,
+config :donator, :jwt,
   alg: "HS256",
   key: "gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C"
