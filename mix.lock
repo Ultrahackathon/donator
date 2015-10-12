@@ -7,6 +7,7 @@
   "hackney": {:hex, :hackney, "1.3.2"},
   "httpoison": {:hex, :httpoison, "0.7.4"},
   "idna": {:hex, :idna, "1.0.2"},
+  "json_web_token": {:hex, :json_web_token, "0.2.2"},
   "mongodb": {:hex, :mongodb, "0.1.0"},
   "mongodb_ecto": {:hex, :mongodb_ecto, "0.1.1"},
   "oauth2": {:hex, :oauth2, "0.3.0"},

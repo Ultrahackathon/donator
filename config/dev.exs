@@ -38,3 +38,7 @@ config :donator, Donator.Repo,
   database: "donator_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :donator, :jwt,
+  alg: "HS256",
+  key: "gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C"

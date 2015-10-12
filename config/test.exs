@@ -16,3 +16,7 @@ config :donator, Donator.Repo,
   password: "mongodb",
   database: "donator_test",
   hostname: "localhost"
+
+config :jwt,
+  alg: "HS256",
+  key: "gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C"

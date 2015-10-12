@@ -36,7 +36,8 @@ defmodule Donator.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:mongodb_ecto, "~> 0.1"},
-     {:oauth2, "~> 0.3"}]
+     {:oauth2, "~> 0.3"},
+     {:json_web_token, "~> 0.2"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
