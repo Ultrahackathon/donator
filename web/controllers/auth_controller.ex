@@ -59,7 +59,7 @@ defmodule Donator.AuthController do
   end
   defp generate_jwt({:error, user}), do: {:error, user}
 
-  defp prepare_response({:ok, jwt}, conn), do: conn |> put_resp_cookie("token", jwt)
+  defp prepare_response({:ok, jwt}, conn), do: conn |> put_resp_cookie("token", jwt, ["http_only": false])
   defp prepare_response({:error, _}, conn), do: conn
 
   defp authorize_url!("github"), do: GitHub.authorize_url!
