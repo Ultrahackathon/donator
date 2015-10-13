@@ -13,9 +13,9 @@ defmodule Facebook do
   def client do
     OAuth2.Client.new([
       strategy: __MODULE__,
-      client_id: System.get_env("FCLIENT_ID"),
-      client_secret: System.get_env("FCLIENT_SECRET"),
-      redirect_uri: System.get_env("FREDIRECT_URI"),
+      client_id: System.get_env("FACEBOOK_CLIENT_ID"),
+      client_secret: System.get_env("FACEBOOK_CLIENT_SECRET"),
+      redirect_uri: System.get_env("FACEBOOK_REDIRECT_URI"),
       site: "https://graph.facebook.com/v2.3",
       authorize_url: "https://www.facebook.com/dialog/oauth",
       token_url: "https://graph.facebook.com/v2.3/oauth/access_token"

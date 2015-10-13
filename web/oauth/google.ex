@@ -13,9 +13,9 @@ defmodule Google do
   def client do
     OAuth2.Client.new([
       strategy: __MODULE__,
-      client_id: System.get_env("GCLIENT_ID"),
-      client_secret: System.get_env("GCLIENT_SECRET"),
-      redirect_uri: System.get_env("GREDIRECT_URI"),
+      client_id: System.get_env("GOOGLE_CLIENT_ID"),
+      client_secret: System.get_env("GOOGLE_CLIENT_SECRET"),
+      redirect_uri: System.get_env("GOOGLE_REDIRECT_URI"),
       site: "https://www.googleapis.com",
       authorize_url: "https://accounts.google.com/o/oauth2/auth",
       token_url: "https://accounts.google.com/o/oauth2/token"
