@@ -19,9 +19,25 @@ defmodule Donator.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
-    {:ok, socket}
+  def connect(%{"token" => token}, socket) do
+    jwt_config = Application.get_env(:donator, :jwt)
+    opts = %{
+      alg: jwt_config[:alg],
+      key: jwt_config[:key]
+    }
+
+    try do
+      case JsonWebToken.verify(token, opts) do
+        {:ok, claims} ->
+          socket = Phoenix.Socket.assign(socket, :token, "abc")
+          {:ok, socket}
+        _ -> :error
+      end
+    rescue
+      _ -> :error
+    end
   end
+  def connect(_, socket), do: :error
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #
@@ -33,5 +49,5 @@ defmodule Donator.UserSocket do
   #     Donator.Endpoint.broadcast("users_socket:" <> user.id, "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
-  def id(_socket), do: nil
+  def id(socket), do: "users_socket:#{socket.assigns.token}"
 end
