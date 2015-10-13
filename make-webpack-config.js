@@ -1,7 +1,6 @@
 var path = require("path");
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var StatsPlugin = require("stats-webpack-plugin");
 
 function extsToRegExp(exts) {
   return new RegExp("\\.(" + exts.map(function(ext) {
@@ -99,21 +98,12 @@ module.exports = function(options) {
     new webpack.PrefetchPlugin("react/lib/ReactComponentBrowserEnvironment")
   ];
   if(options.prerender) {
-    plugins.push(new StatsPlugin(path.join(__dirname, "build", "stats.prerender.json"), {
-      chunkModules: true,
-      exclude: excludeFromStats
-    }));
     aliasLoader["react-proxy$"] = "react-proxy/unavailable";
     aliasLoader["react-proxy-loader$"] = "react-proxy-loader/unavailable";
     externals.push(
       /^react(\/.*)?$/
     );
     plugins.push(new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }));
-  } else {
-    plugins.push(new StatsPlugin(path.join(__dirname, "build", "stats.json"), {
-      chunkModules: true,
-      exclude: excludeFromStats
-    }));
   }
   if(options.commonsChunk) {
     plugins.push(new webpack.optimize.CommonsChunkPlugin("commons", "commons.js" + (options.longTermCaching && !options.prerender ? "?[chunkhash]" : "")));
