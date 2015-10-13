@@ -12,7 +12,7 @@ config :donator, Donator.Endpoint,
   code_reloader: true,
   cache_static_lookup: false,
   check_origin: false,
-  watchers: [{Path.expand("node_modules/webpack/bin/webpack.js"), ["--watch", "--colors", "--progress"]}]
+  watchers: [{Path.expand("node_modules/.bin/webpack"), ["--config webpack-dev.config.js", "--watch", "--colors", "--progress"]}]
 
 # Watch static and templates for browser reloading.
 config :donator, Donator.Endpoint,

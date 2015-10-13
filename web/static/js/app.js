@@ -1,8 +1,8 @@
-// import React from "bower_components/react/react"
+import React from "react";
 // import DonatorApp from "./components/DonatorApp"
 //
-// React.render(
-//   <DonatorApp />,
-//   document.getElementById("donator")
-// );
+React.render(
+  <h1>Hello, world!</h1>,
+  document.getElementById("donator")
+);
 console.log("Hello from Webpack");
