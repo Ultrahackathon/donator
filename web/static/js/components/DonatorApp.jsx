@@ -1,5 +1,4 @@
-import React from "bower_components/react/react";
-import cx from "bower_components/classnames";
+import React from "react";
 
 export default React.createClass({
 

@@ -1,7 +1,7 @@
 import React from "react";
-// import DonatorApp from "./components/DonatorApp"
-//
+import DonatorApp from "./components/DonatorApp"
+
 React.render(
-  <h1>Hello, world!</h1>,
+  <DonatorApp />,
   document.getElementById("donator")
 );
