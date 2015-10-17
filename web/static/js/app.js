@@ -1,7 +1,8 @@
-import React from "react";
+import React from "react"
+import ReactDOM from "react-dom"
 import DonatorApp from "./components/DonatorApp"
 
-React.render(
+ReactDOM.render(
   <DonatorApp />,
   document.getElementById("donator")
 );
