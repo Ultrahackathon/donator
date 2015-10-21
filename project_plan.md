@@ -1,5 +1,3 @@
-Make sure your presentation is crystal clear to anyone and everyone. Here is a template you can use, but you don't have to follow it strictly – you choose the best way to introduce your project outcome.
-
 ### Problem
 
 Brick-and-mortar stores are lacking visitors as more and more business is handled online. These stores are part of the city's identity, and we don't want them to die. Cities have a lot of other interesting places (POI), but are very poor at marketing and promoting, especially in digital channels. The general problem for users is lack of knowledge POI's existence and motivation to actually visit them in first place.
@@ -16,26 +14,21 @@ Application supports creating a donation track, which involve multiple locations
 
 Monthly leaderboards keep track of people who gathered the most donations and businesses with the most activity, which leads to users competing to get higher amounts of donations gathered.
 
-<!-- - Businesses get good PR value from donating to charities
-- Businesses get new customers and more revenue from people visiting their stores -->
-
 ### Business model
 
-Why it is better than competitors/why it is unique?
-How your idea will (or does) convert into being economically viable. What do you sell? To whom?
+- Why it is better than competitors/why it is unique?
+- How your idea will (or does) convert into being economically viable. What do you sell? To whom?
 
 This is a non-profit work. If we need some money for running this, we can take
 little cut from donations.
 
 ### Improvements
 
-Which improvements were done during Ultrahack?
-What are planned improvements after Ultrahack?
-Did you/how did you pivoted during the Ultrahack?
+- Which improvements were done during Ultrahack?
+- What are planned improvements after Ultrahack?
+- Did you/how did you pivoted during the Ultrahack?
 
 ### Technology & Product
-
-Which tech/API's were used with it and how?
 
 We're creating a mobile application which is built with React and PhoneGap.
 This application has an Elixir backend with MongoDB as our data storage solution.
@@ -43,11 +36,7 @@ With this combination we are looking at the best ability for scaling to the appl
 We use Facebook, Twitter, Google and GitHub APIs for authentication of users.
 Foursquare APIs are used for locations and check-ins.
 
-How did you benefit from Ultrahack-coaching or new talent recruits during Ultrahack?
-
 ### Background
-
-Introduce your team and your teams' background.
 
 Niko Kauppila
 I'm developer who has worked mostly with backends.
@@ -57,3 +46,6 @@ I'm a full-stack developer with a passion for good UX
 
 Jani Koivukoski
 All-around developer with special interest in QA and performance testing.
+
+Antti Forsell
+DevOps specialist
