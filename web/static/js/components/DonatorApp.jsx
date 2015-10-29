@@ -1,6 +1,10 @@
+import '../../styles/base'
+
 import React from 'react';
 import Header from './Header'
 import Login from './Login'
+import Navigation from './Navigation'
+
 
 export default React.createClass({
 
@@ -13,6 +17,7 @@ export default React.createClass({
           This is donator.
         </div>
         <Login />
+        <Navigation />
     </div>
     );
   }
