@@ -34,14 +34,14 @@ export default class DonatorApp extends React.Component {
     return (
       <div>
         <Header />
-        <div onClick={this.props.click}>
+        <div >
           Hello, World!
           This is donator.
         </div>
-        {this.props.children}
+        {this.props.children && React.cloneElement(this.props.children, { channel: this.state.channel })}
         <Login />
         <Navigation />
     </div>
     );
   }
-});
+}
