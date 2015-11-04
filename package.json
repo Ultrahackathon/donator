@@ -12,6 +12,7 @@
     "history": "^1.12.5",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
+    "react-modal": "^0.6.1",
     "react-proxy-loader": "^0.3.4",
     "react-router": "^1.0.0-rc4"
   },

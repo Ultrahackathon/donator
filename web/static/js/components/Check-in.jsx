@@ -1,15 +1,33 @@
-import React from 'react';
+import React from 'react'
+import Modal from 'react-modal'
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+}
+
 
 export default class CheckIn extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {geolocation: ['empty']}
+    this.state = {
+      geolocation: ['Loading...'],
+      locations: [],
+      modalIsOpen: false,
+      selectedLocation: null
+    }
+
   }
 
   componentWillMount() {
     if ('geolocation' in navigator) {
-      this.setState({geolocation: ['notempty']})
       navigator.geolocation.getCurrentPosition( (pos) => {
         this.setState({geolocation: [pos.coords.latitude, pos.coords.longitude]})
       })
@@ -19,15 +37,43 @@ export default class CheckIn extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextState.geolocation !== this.state.geolocation
+    return nextState.geolocation !== this.state.geolocation || nextState.locations !== this.state.locations || nextState.modalIsOpen !== this.state.modalIsOpen
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.geolocation !== this.state.geolocation) {
+    }
+   }
+
+   openModal(loc) {
+     this.setState({modalIsOpen: true, selectedLocation: loc})
+   }
+
+   closeModal = () => {
+     this.setState({modalIsOpen: false})
+   }
+
+   handleCheckIn = () => {
+     console.log('Checked in!', this.state.selectedLocation, this.state.geolocation)
+     this.setState({modalIsOpen: false})
+   }
 
   render() {
     return (
       <div>
         <h2>This is the Check-in</h2>
         <p>Location: {this.state.geolocation.join(',')}</p>
+        <ul>
+          {this.state.locations.map( (loc) => {
+            return <li key={loc.id}><a onClick={this.openModal.bind(this, loc)}>{loc.name}</a></li>
+          })}
+        </ul>
+        <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} styles={customStyles}>
+          <h3>{this.state.selectedLocation ? this.state.selectedLocation.name : ''}</h3>
+          {JSON.stringify(this.state.selectedLocation)}
+          <button onClick={this.closeModal}>close</button>
+          <button onClick={this.handleCheckIn}>Check In</button>
+        </Modal>
       </div>
     )
   }
