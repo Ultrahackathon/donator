@@ -3,6 +3,7 @@ defmodule Donator.UserSocket do
 
   ## Channels
   # channel "rooms:*", Donator.RoomChannel
+  channel "actions", Donator.ActionsChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
@@ -29,7 +30,7 @@ defmodule Donator.UserSocket do
     try do
       case JsonWebToken.verify(token, opts) do
         {:ok, claims} ->
-          socket = Phoenix.Socket.assign(socket, :token, "abc")
+          socket = Phoenix.Socket.assign(socket, :token, token)
           {:ok, socket}
         _ -> :error
       end

@@ -42,3 +42,6 @@ config :donator, Donator.Repo,
 config :donator, :jwt,
   alg: "HS256",
   key: "gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C"
+
+config :donator, :foursquare,
+  endpoint: "https://api.foursquare.com/v2/venues/search?v=20151010"
