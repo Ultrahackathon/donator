@@ -26,7 +26,10 @@
     "style-loader": "^0.13.0",
     "webpack": "^1.12.2"
   },
-  "scripts": {},
+  "scripts": {
+    "prestart": "npm i && mix deps.get",
+    "start": "iex -S mix phoenix.server"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ultrahackathon/donator.git"
