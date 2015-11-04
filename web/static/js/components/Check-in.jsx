@@ -27,6 +27,9 @@ export default class CheckIn extends React.Component {
     this.props.channel.on('locations:near', payload => {
       this.setState({locations: payload.venues})
     })
+    this.props.channel.on('check-in', payload => {
+      console.log('Check-in result', payload)
+    })
 
   }
 
@@ -60,6 +63,7 @@ export default class CheckIn extends React.Component {
 
    handleCheckIn = () => {
      console.log('Checked in!', this.state.selectedLocation, this.state.geolocation)
+     this.props.channel.push('check-in', { location: this.state.selectedLocation, geolocation: this.state.geolocation })
      this.setState({modalIsOpen: false})
    }
 
