@@ -13,7 +13,7 @@ export default React.createClass({
     return (
       <div>
         <Header />
-        <div>
+        <div onClick={this.props.click}>
           Hello, World!
           This is donator.
         </div>
