@@ -7,7 +7,6 @@ import Map from './components/Map'
 import CheckIn from './components/Check-in'
 import Leaderboard from './components/Leaderboard'
 import Profile from './components/Profile'
-import DonatorApp from "./components/DonatorApp"
 import {Socket} from "./phoenix"
 
 function connect() {
