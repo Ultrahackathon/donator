@@ -12,4 +12,4 @@ ENV JOURNALING yes
 
 EXPOSE 27017
 
-ENTRYPOINT ["/usr/bin/mongod"]
+ENTRYPOINT ["/usr/bin/mongod", "--dbpath", "/data/db"]
