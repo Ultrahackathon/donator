@@ -83,4 +83,11 @@ defmodule Donator.ActionsChannel do
     handle_socket_with_claims socket, success, error
   end
 
+  def handle_in("leaderboard", payload, socket) do
+    IO.inspect("kakkapylly")
+    leaderboard = UserRepository.get_leaderboard
+    IO.inspect leaderboard
+    push socket, "leaderboard", %{"leaderboard": leaderboard}
+  end
+
 end
