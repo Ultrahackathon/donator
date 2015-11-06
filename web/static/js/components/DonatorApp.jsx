@@ -1,9 +1,8 @@
 import '../../styles/base'
 
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router'
 import Header from './Header'
-import Login from './Login'
 import Navigation from './Navigation'
 import { Socket } from '../phoenix'
 
@@ -13,7 +12,8 @@ export default class DonatorApp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      channel: null
+      channel: null,
+      isAuthenticated: false
     }
   }
 
@@ -24,13 +24,34 @@ export default class DonatorApp extends React.Component {
     this.setState({channel: channel})
 
     channel.join()
-      .receive('ok', ({messages}) => channel.push('locations:near', {lat: 60.169308699999995, lng: 24.9292901}, 10000))
-      .receive('error', ({reason}) => console.log('failed join', reason) )
+      .receive('ok', ({messages}) => {
+        this.setState({isAuthenticated: true})
+      })
+      .receive('error', ({reason}) => {
+        console.log('failed join', reason)
+        this.setState({isAuthenticated: false})
+      } )
       .receive('timeout', () => console.log('Networking issue. Still waiting...') )
+
+    if (!this.state.isAuthenticated) {
+      console.log('CWM - pushState')
+      this.props.history.pushState(null, '/signin')
+    }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props !== nextProps || this.state !== nextState
+  }
+
+  componentDidUpdate(prevProp, prevStat) {
+    if (!this.state.isAuthenticated && this.props.location.pathname !== '/signin') {
+      console.log('CDU - pushState', this.props)
+      this.props.history.pushState(null, '/signin')
+    }
+  }
 
   render() {
+    console.log('render', this.state, this.props)
     return (
       <div>
         <Header />
@@ -38,8 +59,7 @@ export default class DonatorApp extends React.Component {
           Hello, World!
           This is donator.
         </div>
-        {this.props.children && React.cloneElement(this.props.children, { channel: this.state.channel })}
-        <Login />
+        {this.props.children && React.cloneElement(this.props.children, { channel: this.state.channel, isAuthenticated: this.state.isAuthenticated })}
         <Navigation />
     </div>
     );
