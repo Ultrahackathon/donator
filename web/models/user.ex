@@ -26,6 +26,14 @@ defmodule Donator.UserRepository do
     alias Donator.Repo
     alias Donator.User
 
+    def find_all do
+      Repo.all User
+    end
+
+    def find_all_checkins do
+      find_all |> Enum.map(fn u -> u.checkins end)
+    end
+
     def find_one_by_provider_id(provider, user_id) do
         query = from user in User,
                 where: user.provider == ^provider and user.user_id == ^user_id,
@@ -54,5 +62,13 @@ defmodule Donator.UserRepository do
       changeset = User.changeset(user, change)
 
       Repo.update(changeset)
+    end
+
+    def get_leaderboard do
+      find_all
+      |> Enum.map(fn user ->
+        %{id: user.id, name: user.name, checkin_count: Enum.count(user.checkins)}
+      end)
+      |> Enum.sort(fn a, b -> a.checkin_count > b.checkin_count end)
     end
 end
