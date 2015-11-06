@@ -3,6 +3,31 @@ defmodule Donator.ActionsChannel do
   alias Donator.Foursquare
   alias Donator.UserRepository
 
+  def handle_socket_with_claims socket, success, error do
+    jwt_config = Application.get_env(:donator, :jwt)
+    opts = %{
+      alg: jwt_config[:alg],
+      key: jwt_config[:key]
+    }
+
+    try do
+      case JsonWebToken.verify socket.assigns[:token], opts do
+        {:ok, claims} ->
+          success.(claims)
+          {:noreply, socket}
+        e ->
+          error.(e)
+          IO.inspect e
+          {:noreply, socket}
+      end
+      rescue
+        e ->
+          error.(e)
+          IO.inspect e
+          {:noreply, socket}
+    end
+  end
+
   def join("actions", payload, socket) do
     {:ok, socket}
   end
@@ -16,54 +41,32 @@ defmodule Donator.ActionsChannel do
   end
 
   def handle_in("check-in", payload, socket) do
-    jwt_config = Application.get_env(:donator, :jwt)
-    opts = %{
-      alg: jwt_config[:alg],
-      key: jwt_config[:key]
-    }
+    success = fn claims ->
+        UserRepository.add_checkin(claims[:id], payload)
+        push socket, "check-in", %{"success": true}
+    end
 
-    try do
-      case JsonWebToken.verify(socket.assigns[:token], opts) do
-        {:ok, claims} ->
-          UserRepository.add_checkin(claims[:id], payload)
-          push socket, "check-in", %{"success": true}
-          {:noreply, socket}
-        _ ->
-          push socket, "check-in", %{"success": false}
-          {:noreply, socket}
-      end
-    rescue
-      _ ->
+    error = fn e ->
         push socket, "check-in", %{"success": false}
         {:noreply, socket}
     end
+
+    handle_socket_with_claims socket, success, error
   end
 
   def handle_in("user", payload, socket) do
-    jwt_config = Application.get_env(:donator, :jwt)
-    opts = %{
-      alg: jwt_config[:alg],
-      key: jwt_config[:key]
-    }
+    success = fn claims ->
+        user = UserRepository.find_one_by_id(claims[:id])
+        IO.inspect(user)
+        push socket, "user", user
+    end
 
-    try do
-      case JsonWebToken.verify(socket.assigns[:token], opts) do
-        {:ok, claims} ->
-          user = UserRepository.find_one_by_id(claims[:id])
-          IO.inspect(user)
-          push socket, "user", user
-          {:noreply, socket}
-        e ->
-          IO.inspect(e)
-          push socket, "user", %{"user": nil}
-          {:noreply, socket}
-      end
-    rescue
-      e ->
+    error = fn e ->
         IO.inspect(e)
         push socket, "user", %{"user": nil}
-        {:noreply, socket}
     end
+
+    handle_socket_with_claims socket, success, error
   end
 
 end
