@@ -13,7 +13,7 @@ use Mix.Config
 # which you typically run after static files are built.
 config :donator, Donator.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "donator.io", port: 80]
+  url: [host: "app.donator.io", port: 80]
 
 # Do not print debug messages in production
 config :logger, level: :info
