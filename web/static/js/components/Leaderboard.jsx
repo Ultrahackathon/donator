@@ -10,8 +10,11 @@ export default class Leaderboard extends React.Component {
     this.props.channel.on('leaderboard', payload => {
       this.setState({users: payload.leaderboard})
     })
-    this.props.channel.push('leaderboard')
 
+  }
+
+  componentWillMount() {
+    this.props.channel.push('leaderboard')
   }
 
   render() {
