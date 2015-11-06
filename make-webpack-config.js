@@ -51,8 +51,8 @@ module.exports = function(options) {
     'json5': 'json5-loader',
     'txt': 'raw-loader',
     'png|jpg|jpeg|gif|svg': 'url-loader?limit=10000',
-    'woff|woff2': 'url-loader?limit=100000',
-    'ttf|eot': 'file-loader',
+    'woff|woff2': 'url-loader?limit=100000&name=../assets/[hash].[ext]',
+    'ttf|eot': 'file-loader?name=../assets/[hash].[ext]',
     'wav|mp3': 'file-loader',
     'html': 'html-loader',
     'md|markdown': ['html-loader', 'markdown-loader']
@@ -81,7 +81,7 @@ module.exports = function(options) {
   var root = [
     path.join(__dirname, 'web'),
   ];
-  var publicPath = '/_assets/';
+  var publicPath = '/assets/';
   var output = {
     path: './priv/static/js',
     publicPath: publicPath,
