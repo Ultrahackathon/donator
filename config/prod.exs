@@ -13,18 +13,10 @@ use Mix.Config
 # which you typically run after static files are built.
 config :donator, Donator.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "donator.io", port: 80],
-  cache_static_manifest: "priv/static/manifest.json"
+  url: [host: "donator.io", port: 80]
 
 # Do not print debug messages in production
 config :logger, level: :info
-
-config :donator, :jwt,
-  alg: "HS256",
-  key: "gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C"
-
-config :donator, :foursquare,
-  endpoint: "https://api.foursquare.com/v2/venues/search?v=20151010"
 
 # ## SSL Support
 #

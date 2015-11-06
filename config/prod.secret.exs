@@ -8,8 +8,5 @@ config :donator, Donator.Endpoint,
 
 # Configure your database
 config :donator, Donator.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
   database: "donator_prod",
   pool_size: 20

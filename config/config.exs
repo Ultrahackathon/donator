@@ -27,3 +27,16 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+
+config :donator, Donator.Repo,
+  adapter: Mongo.Ecto,
+  database: "donator_dev",
+  hostname: (System.get_env("MONGO_PORT_27017_TCP_ADDR") || "localhost"),
+  pool_size: 10
+
+config :donator, :jwt,
+  alg: "HS256",
+  key: "gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C"
+
+config :donator, :foursquare,
+  endpoint: "https://api.foursquare.com/v2/venues/search?v=20151010"
