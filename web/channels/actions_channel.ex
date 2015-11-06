@@ -16,14 +16,14 @@ defmodule Donator.ActionsChannel do
           success.(claims)
           {:noreply, socket}
         e ->
-          error.(e)
           IO.inspect e
+          error.(e)
           {:noreply, socket}
       end
       rescue
         e ->
-          error.(e)
           IO.inspect e
+          error.(e)
           {:noreply, socket}
     end
   end
