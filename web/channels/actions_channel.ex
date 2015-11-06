@@ -84,10 +84,10 @@ defmodule Donator.ActionsChannel do
   end
 
   def handle_in("leaderboard", payload, socket) do
-    IO.inspect("kakkapylly")
     leaderboard = UserRepository.get_leaderboard
     IO.inspect leaderboard
     push socket, "leaderboard", %{"leaderboard": leaderboard}
+    {:noreply, socket}
   end
 
 end
