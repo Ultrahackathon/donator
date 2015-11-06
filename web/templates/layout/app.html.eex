@@ -8,12 +8,12 @@
     <meta name="author" content="">
 
     <title>Hello Phoenix!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/bundle.css") %>">
   </head>
 
   <body>
     <div class="container" role="main" id="donator">
-      
+
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/bundle.js") %>"></script>
   </body>

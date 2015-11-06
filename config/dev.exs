@@ -12,7 +12,7 @@ config :donator, Donator.Endpoint,
   code_reloader: true,
   cache_static_lookup: false,
   check_origin: false,
-  watchers: [{Path.expand("node_modules/.bin/webpack"), ["--config webpack-dev.config.js", "--watch", "--colors", "--progress"]}]
+  watchers: [{Path.expand("node_modules/.bin/webpack"), ["--config webpack-dev.config.js", "--watch", "--colors"]}]
 
 # Watch static and templates for browser reloading.
 config :donator, Donator.Endpoint,
@@ -42,3 +42,6 @@ config :donator, Donator.Repo,
 config :donator, :jwt,
   alg: "HS256",
   key: "gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C"
+
+config :donator, :foursquare,
+  endpoint: "https://api.foursquare.com/v2/venues/search?v=20151010"

@@ -19,7 +19,7 @@ defmodule Donator.Mixfile do
   def application do
     [mod: {Donator, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :mongodb_ecto, :oauth2]]
+                    :phoenix_ecto, :mongodb_ecto, :oauth2, :httpoison]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,7 +37,9 @@ defmodule Donator.Mixfile do
      {:cowboy, "~> 1.0"},
      {:mongodb_ecto, "~> 0.1"},
      {:oauth2, "~> 0.3"},
-     {:json_web_token, "~> 0.2"}]
+     {:json_web_token, "~> 0.2"},
+     {:httpoison, "~> 0.7.2"},
+     {:poison, "~> 1.5"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

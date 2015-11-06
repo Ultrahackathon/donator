@@ -1,0 +1,43 @@
+@import './main.css';
+@import './normalize.css';
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+
+header, .nav-container {
+  height: 100%;
+  background: #FFFF55;
+}
+
+header a, header h1 {
+  margin: auto;
+  width: 10%;
+  background-color: ForestGreen;
+  text-align: center;
+  height: 100%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 10px 0;
+  margin-bottom: -10px;
+  color: White;
+  z-index: 9999;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 80%;
+  margin: auto;
+}
+
+nav {
+  width: 40%;
+  margin: auto;
+  text-align: center;
+}
