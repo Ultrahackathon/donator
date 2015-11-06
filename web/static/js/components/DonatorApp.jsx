@@ -34,7 +34,6 @@ export default class DonatorApp extends React.Component {
       .receive('timeout', () => console.log('Networking issue. Still waiting...') )
 
     if (!this.state.isAuthenticated) {
-      console.log('CWM - pushState')
       this.props.history.pushState(null, '/signin')
     }
   }
@@ -45,7 +44,6 @@ export default class DonatorApp extends React.Component {
 
   componentDidUpdate(prevProp, prevStat) {
     if (!this.state.isAuthenticated && this.props.location.pathname !== '/signin') {
-      console.log('CDU - pushState', this.props)
       this.props.history.pushState(null, '/signin')
     }
   }
