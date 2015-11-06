@@ -28,7 +28,7 @@
   },
   "scripts": {
     "prestart": "npm i && mix deps.get",
-    "start": "iex -S mix phoenix.server"
+    "start": ". ./keys/gistfile1.txt && iex -S mix phoenix.server"
   },
   "repository": {
     "type": "git",
