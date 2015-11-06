@@ -1,6 +1,19 @@
 @import './main.css';
 @import './normalize.css';
 
+
+@font-face {
+  font-family: 'icomoon';
+  src:url('../fonts/icomoon.eot?8bfcc');
+  src:url('../fonts/icomoon.eot?8bfcc#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?8bfcc') format('truetype'),
+    url('../fonts/icomoon.woff?8bfcc') format('woff'),
+    url('../fonts/icomoon.svg?8bfcc#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 @media (min-width: 768px) {
   .container {
     max-width: 730px;
@@ -40,4 +53,41 @@ header a {
 nav {
   margin: auto;
   text-align: center;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 4rem;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-map:before {
+  content: "\e902";
+}
+.icon-Checkin .path1:before {
+  content: "\e900";
+  color: rgb(115, 98, 98);
+}
+.icon-Checkin .path2:before {
+  content: "\e901";
+  margin-left: -0.4453125em;
+  color: rgb(255, 4, 4);
+}
+.icon-user:before {
+  content: "\e903";
+}
+.icon-users:before {
+  content: "\e904";
+}
+.icon-list-numbered:before {
+  content: "\e905";
 }
