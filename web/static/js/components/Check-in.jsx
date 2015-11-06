@@ -49,7 +49,7 @@ export default class CheckIn extends React.Component {
 
   componentWillUpdate(nextProps, nextState) {
     if (nextState.geolocation !== this.state.geolocation) {
-      this.props.channel.push('locations:near', {lat: this.state.geolocation[0], lng: this.state.geolocation[1]})
+      this.props.channel.push('locations:near', {lat: nextState.geolocation[0], lng: nextState.geolocation[1]})
     }
    }
 
