@@ -2,6 +2,7 @@ defmodule Donator.ActionsChannel do
   use Phoenix.Channel
   alias Donator.Foursquare
   alias Donator.UserRepository
+  alias Donator.LocationRepository
 
   def handle_socket_with_claims socket, success, error do
     jwt_config = Application.get_env(:donator, :jwt)
@@ -36,7 +37,13 @@ defmodule Donator.ActionsChannel do
     lat = payload["lat"]
     lng = payload["lng"]
     {:ok, venues} = Foursquare.get("#{lat},#{lng}")
-    push socket, "locations:near", venues.body[:response]
+    supported_locations = LocationRepository.find_all |> Enum.map(fn l -> l.foursquare_id end)
+    venues = venues.body[:response]["venues"]
+    |> Enum.filter(fn venue ->
+      Enum.member? supported_locations, venue["id"]
+    end)
+    IO.inspect(venues)
+    push socket, "locations:near", %{"venues": venues}
     {:noreply, socket}
   end
 
