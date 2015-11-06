@@ -39,4 +39,31 @@ defmodule Donator.ActionsChannel do
     end
   end
 
+  def handle_in("user", payload, socket) do
+    jwt_config = Application.get_env(:donator, :jwt)
+    opts = %{
+      alg: jwt_config[:alg],
+      key: jwt_config[:key]
+    }
+
+    try do
+      case JsonWebToken.verify(socket.assigns[:token], opts) do
+        {:ok, claims} ->
+          user = UserRepository.find_one_by_id(claims[:id])
+          IO.inspect(user)
+          push socket, "user", user
+          {:noreply, socket}
+        e ->
+          IO.inspect(e)
+          push socket, "user", %{"user": nil}
+          {:noreply, socket}
+      end
+    rescue
+      e ->
+        IO.inspect(e)
+        push socket, "user", %{"user": nil}
+        {:noreply, socket}
+    end
+  end
+
 end

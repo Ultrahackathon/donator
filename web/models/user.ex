@@ -5,6 +5,7 @@ defmodule Donator.User do
     @optional_fields ~w(checkins email)
 
     @primary_key {:id, :binary_id, autogenerate: true}
+    @derive {Poison.Encoder, only: [:user_id, :provider, :email, :name, :checkins]}
     schema "user" do
         field :user_id
         field :provider
@@ -31,6 +32,10 @@ defmodule Donator.UserRepository do
                 select: user
 
         Repo.one query
+    end
+
+    def find_one_by_id(id) do
+      Repo.get!(User, id)
     end
 
     def insert(user) do
