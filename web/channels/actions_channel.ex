@@ -66,15 +66,17 @@ defmodule Donator.ActionsChannel do
 
   def handle_in("check-in", payload, socket) do
     success = fn claims ->
-        Logger.debug "#{inspect payload}"
+        Logger.debug "taman alla"
+        Logger.debug "#{inspect claims}"
 
         locations = LocationRepository.find_all |> Enum.map(fn l -> l.foursquare_id end)
 
-        if Enum.member? locations, payload["location"]["id"] do
+        if Enum.member? locations, payload["location"]["venue"]["id"] do
           UserRepository.add_checkin(claims[:id], payload)
-          email = Base.encode16(:erlang.md5(claims[:email]), case: :lower)
 
-          broadcast! socket, "feed", %{"email": email, "name": claims[:name], "location": payload["location"]["name"]}
+          email = claims[:email] && Base.encode16(:erlang.md5(claims[:email]), case: :lower) || ""
+
+          broadcast! socket, "feed", %{"email": email, "name": claims[:name], "location": payload["location"]["venue"]["name"]}
           push socket, "check-in", %{"success": true}
         else
           push socket, "check-in", %{"success": false, "message": "Check-in not allowed in this location!"}
