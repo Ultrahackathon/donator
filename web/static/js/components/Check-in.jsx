@@ -24,12 +24,7 @@ export default class CheckIn extends React.Component {
       selectedLocation: null
     }
 
-    this.props.channel.on('locations:near', payload => {
-      this.setState({locations: payload.venues})
-    })
-    this.props.channel.on('check-in', payload => {
-      console.log('Check-in result', payload)
-    })
+
 
   }
 
@@ -43,6 +38,20 @@ export default class CheckIn extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.props.channel.on('locations:near', payload => {
+      this.setState({locations: payload.venues})
+    })
+    this.props.channel.on('check-in', payload => {
+      console.log('Check-in result', payload)
+    })
+  }
+
+  componentWillUnmount() {
+    this.props.channel.off('check-in')
+    this.props.channel.off('locations:near')
+  }
+  
   shouldComponentUpdate(nextProps, nextState) {
     return nextState.geolocation !== this.state.geolocation || nextState.locations !== this.state.locations || nextState.modalIsOpen !== this.state.modalIsOpen
   }
