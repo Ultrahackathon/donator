@@ -51,7 +51,7 @@ export default class CheckIn extends React.Component {
     this.props.channel.off('check-in')
     this.props.channel.off('locations:near')
   }
-  
+
   shouldComponentUpdate(nextProps, nextState) {
     return nextState.geolocation !== this.state.geolocation || nextState.locations !== this.state.locations || nextState.modalIsOpen !== this.state.modalIsOpen
   }
@@ -63,7 +63,7 @@ export default class CheckIn extends React.Component {
    }
 
    openModal(loc) {
-     this.setState({modalIsOpen: true, selectedLocation: loc.venue})
+     this.setState({modalIsOpen: true, selectedLocation: loc})
    }
 
    closeModal = () => {
@@ -77,21 +77,31 @@ export default class CheckIn extends React.Component {
    }
 
   render() {
+    let modal
+    if (this.state.selectedLocation) {
+      let location = this.state.selectedLocation
+      modal = (<Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} styles={customStyles}>
+        <h3><img className="foursquare-icon" src={location.venue.categories[0].icon.prefix + '100' + location.venue.categories[0].icon.suffix} alt="" />{location.venue.name}</h3>
+        <p>Address: {location.venue.location.formattedAddress.join(', ')}</p>
+        <p>Phone: {location.venue.contact.formattedPhone}</p>
+        <p>Category: {location.venue.categories[0].name}</p>
+        <p>Donations:</p>
+        <ul>
+          <li>{location.donor.name[0].toUpperCase() + location.donor.name.substr(1)} - {location.donor.templates[0].sum_per_checkin / 100} € to {location.target.name[0].toUpperCase() + location.target.name.substr(1)} per Check-in</li>
+        </ul>
+        <button onClick={this.closeModal}>close</button>
+        <button onClick={this.handleCheckIn}>Check In</button>
+      </Modal>)
+    }
     return (
       <div>
-        <h2>This is the Check-in</h2>
-        <p>Location: {this.state.geolocation.join(',')}</p>
+        <h2>Check-in ({this.state.geolocation.join(',')})</h2>
         <ul>
           {this.state.locations.map( (loc) => {
             return <li key={loc.venue.id}><a onClick={this.openModal.bind(this, loc)}>{loc.venue.name}</a></li>
           })}
         </ul>
-        <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} styles={customStyles}>
-          <h3>{this.state.selectedLocation ? this.state.selectedLocation.name : ''}</h3>
-          {JSON.stringify(this.state.selectedLocation)}
-          <button onClick={this.closeModal}>close</button>
-          <button onClick={this.handleCheckIn}>Check In</button>
-        </Modal>
+        {modal}
       </div>
     )
   }
