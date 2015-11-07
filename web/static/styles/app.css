@@ -46,6 +46,8 @@ header .logo {
 .container .content {
   max-width: 80%;
   margin: auto;
+  text-align: center;
+  margin-top: -2rem;
 }
 
 nav {
@@ -88,14 +90,14 @@ nav {
   color: #508050;
 }
 
-.nav-container .icon-checkin {
-  font-size: 6rem;
+.nav-container .icon-checkin2 {
+  font-size: 5.5rem;
   display: inline-block;
-  background-image: radial-gradient(3rem at 50% 25% , #fff 0%, #FFF546 70%);
+  background-image: radial-gradient(3rem at 50% 25% , #fff 30%, #FFF546 45%);
 }
 
-.nav-container .active .icon-checkin {
-  background-image: radial-gradient(3rem at 50% 25% , #fff 0%, #FFD046 70%);
+.nav-container .active .icon-checkin2 {
+  background-image: radial-gradient(3rem at 50% 25% , #fff 30%, #FFD046 45%);
 }
 
 .nav-container #checkin {

@@ -24,11 +24,39 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-.icon-list-ol:before {
-	content: "\e901";
+a.icon {
+  text-decoration: none;
 }
 
+.icon-github {
+  color: black;
+}
+
+.icon-facebook4 {
+  color: #3B5998;
+}
+
+.icon-google {
+  color: #0266C8;
+}
+.icon-users2:before {
+  content: "\e90d";
+}
+.icon-users3:before {
+  content: "\e90e";
+}
+.icon-user2:before {
+  content: "\e90f";
+}
+.icon-user3:before {
+  content: "\e910";
+}
+.icon-checkin2:before {
+  content: "\e900";
+}
+.icon-list-ol:before {
+  content: "\e901";
+}
 .icon-gear:before {
   content: "\f02f";
 }
@@ -40,6 +68,18 @@
 }
 .icon-users:before {
   content: "\e904";
+}
+.icon-spinner2:before {
+  content: "\e911";
+}
+.icon-spinner4:before {
+  content: "\e912";
+}
+.icon-spinner5:before {
+  content: "\e913";
+}
+.icon-spinner9:before {
+  content: "\e914";
 }
 .icon-list-numbered:before {
   content: "\e905";
@@ -64,8 +104,4 @@
 }
 .icon-map:before {
   content: "\e902";
-}
-
-.icon-checkin:before {
-	content: "\e900";
 }
