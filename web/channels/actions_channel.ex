@@ -5,6 +5,8 @@ defmodule Donator.ActionsChannel do
   alias Donator.UserRepository
   alias Donator.LocationRepository
   alias Donator.TransactionRepository
+  alias Donator.DonorRepository
+  alias Donator.TargetRepository
 
   def handle_socket_with_claims socket, success, error do
     jwt_config = Application.get_env(:donator, :jwt)
@@ -103,6 +105,17 @@ defmodule Donator.ActionsChannel do
     Logger.debug "#{inspect leaderboard}"
 
     push socket, "leaderboard", %{"leaderboard": leaderboard}
+    {:noreply, socket}
+  end
+
+  def handle_in("donor", payload, socket) do
+    Logger.debug "#{inspect payload}"
+
+    donor = DonorRepository.find_template_by_location payload["location"]
+    template = donor.templates |> List.first
+    target = TargetRepository.find_one_by_id template["target_id"]
+
+    push socket, "donor", %{donor: donor, target: target}
     {:noreply, socket}
   end
 
