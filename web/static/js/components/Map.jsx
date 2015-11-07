@@ -13,22 +13,25 @@ export default class Map extends React.Component {
   }
 
   componentWillMount() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition( (pos) => {
-        this.setState({geolocation: [pos.coords.latitude, pos.coords.longitude]})
-        this.props.channel.on('locations:all', payload => {
-          const markers = payload.locations.map(location => {
-            return {position: {lat: parseFloat(location.lat), lng: parseFloat(location.lng)}}
-          })
-
-          this.setState({markers: markers})
-        })
-        this.props.channel.push('locations:all')
-      })
+    if (!this.props.isAuthenticated) {
+      this.props.history.replaceState(null, '/signin')
     } else {
-      this.setState({geolocation: [25.0112183, 121.52067570000001]})
-    }
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition( (pos) => {
+          this.setState({geolocation: [pos.coords.latitude, pos.coords.longitude]})
+          this.props.channel.on('locations:all', payload => {
+            const markers = payload.locations.map(location => {
+              return {position: {lat: parseFloat(location.lat), lng: parseFloat(location.lng)}}
+            })
 
+            this.setState({markers: markers})
+          })
+          this.props.channel.push('locations:all')
+        })
+      } else {
+        this.setState({geolocation: [25.0112183, 121.52067570000001]})
+      }
+    }
   }
 
   render() {

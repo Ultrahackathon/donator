@@ -15,10 +15,14 @@ export default class Profile extends React.Component {
   }
 
   componentWillMount() {
-    this.props.channel.on('user', payload => {
-      this.setState(payload)
-    })
-    this.props.channel.push('user')
+    if (!this.props.isAuthenticated) {
+      this.props.history.replaceState(null, '/signin')
+    } else {
+      this.props.channel.on('user', payload => {
+        this.setState(payload)
+      })
+      this.props.channel.push('user')
+    }
   }
 
   render() {

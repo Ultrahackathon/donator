@@ -1,10 +1,16 @@
 import React from 'react';
 import Login from './Login'
 
-export default class Feed extends React.Component {
+export default class SignIn extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
-    this.props.history.pushState(null, '/feed')
+    const { location } = this.props
+
+    if (location.state && location.state.nextPathname) {
+      this.props.history.replaceState(null, location.state.nextPathname)
+    } else {
+      this.props.history.replaceState(null, '/feed')
+    }
   }
 
   render() {

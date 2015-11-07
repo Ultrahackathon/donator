@@ -29,27 +29,35 @@ export default class CheckIn extends React.Component {
   }
 
   componentWillMount() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition( (pos) => {
-        this.setState({geolocation: [pos.coords.latitude, pos.coords.longitude]})
-      })
+    if (!this.props.isAuthenticated) {
+      this.props.history.replaceState(null, '/signin')
     } else {
-      this.setState({geolocation: ['foobarbaz']})
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition( (pos) => {
+          this.setState({geolocation: [pos.coords.latitude, pos.coords.longitude]})
+        })
+      } else {
+        this.setState({geolocation: ['foobarbaz']})
+      }
     }
   }
 
   componentDidMount() {
-    this.props.channel.on('locations:near', payload => {
-      this.setState({locations: payload.venues})
-    })
-    this.props.channel.on('check-in', payload => {
-      console.log('Check-in result', payload)
-    })
+    if (this.props.isAuthenticated) {
+      this.props.channel.on('locations:near', payload => {
+        this.setState({locations: payload.venues})
+      })
+      this.props.channel.on('check-in', payload => {
+        console.log('Check-in result', payload)
+      })
+    }
   }
 
   componentWillUnmount() {
-    this.props.channel.off('check-in')
-    this.props.channel.off('locations:near')
+    if (this.props.channel) {
+      this.props.channel.off('check-in')
+      this.props.channel.off('locations:near')
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {

@@ -9,17 +9,25 @@ export default class Leaderboard extends React.Component {
   }
 
   componentWillMount() {
-    this.props.channel.push('leaderboard')
+    if (!this.props.isAuthenticated) {
+      this.props.history.replaceState(null, '/signin')
+    } else {
+      this.props.channel.push('leaderboard')
+    }
   }
 
   componentDidMount() {
-    this.props.channel.on('leaderboard', payload => {
-      this.setState({users: payload.leaderboard})
-    })
+    if (this.props.isAuthenticated) {
+      this.props.channel.on('leaderboard', payload => {
+        this.setState({users: payload.leaderboard})
+      })
+    }
   }
 
   componentWillUnmount() {
-    this.props.channel.off('leaderboard')
+    if (this.props.channel) {
+      this.props.channel.off('leaderboard')
+    }
   }
 
   render() {
