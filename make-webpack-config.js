@@ -50,9 +50,9 @@ module.exports = function(options) {
     'coffee': 'coffee-redux-loader',
     'json5': 'json5-loader',
     'txt': 'raw-loader',
-    'png|jpg|jpeg|gif|svg': 'url-loader?limit=10000',
-    'woff|woff2': 'url-loader?limit=100000&name=../assets/[hash].[ext]',
-    'ttf|eot': 'file-loader?name=../assets/[hash].[ext]',
+    'png|jpg|jpeg|gif|svg': 'url-loader?limit=10000&name=assets/[hash].[ext]',
+    'woff|woff2': 'url-loader?limit=100000&name=assets/[hash].[ext]',
+    'ttf|eot': 'file-loader?name=assets/[hash].[ext]',
     'wav|mp3': 'file-loader',
     'html': 'html-loader',
     'md|markdown': ['html-loader', 'markdown-loader']
@@ -81,12 +81,12 @@ module.exports = function(options) {
   var root = [
     path.join(__dirname, 'web'),
   ];
-  var publicPath = '/assets/';
+  var publicPath = '/';
   var output = {
-    path: './priv/static/js',
+    path: './priv/static/',
     publicPath: publicPath,
-    filename: '[name].js' + (options.longTermCaching && !options.prerender ? '?[chunkhash]' : ''),
-    chunkFilename: '[name].js' + (options.longTermCaching && !options.prerender ? '?[chunkhash]' : ''),
+    filename: 'js/[name].js' + (options.longTermCaching && !options.prerender ? '?[chunkhash]' : ''),
+    chunkFilename: 'js/[name].js' + (options.longTermCaching && !options.prerender ? '?[chunkhash]' : ''),
     sourceMapFilename: 'debugging/[file].map',
     libraryTarget: options.prerender ? 'commonjs2' : undefined,
     pathinfo: options.debug || options.prerender
@@ -123,7 +123,7 @@ module.exports = function(options) {
     }
   });
   if(options.separateStylesheet && !options.prerender) {
-    plugins.push(new ExtractTextPlugin('../css/[name].css' + (options.longTermCaching ? '?[contenthash]' : '')));
+    plugins.push(new ExtractTextPlugin('css/[name].css' + (options.longTermCaching ? '?[contenthash]' : '')));
   }
   if(options.minimize && !options.prerender) {
     plugins.push(
