@@ -25,6 +25,7 @@ defmodule Donator.Template do
     field :sum_per_checkin, :float
     field :max_sum, :float
     field :location
+    field :target_id
   end
 end
 
