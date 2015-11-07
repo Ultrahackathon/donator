@@ -270,6 +270,62 @@
 
 }
 
+@media only screen
+  and (min-device-width: 1600px) {
+    html {
+      font-size: 20px;
+    }
+}
+
+@media only screen
+  and (max-device-width: 1600px) {
+    html {
+      font-size: 17px;
+    }
+}
+
+@media only screen
+  and (max-device-width: 1200px) {
+    html {
+      font-size: 16px;
+    }
+}
+
+@media only screen
+  and (max-device-width: 1024px) {
+    html {
+      font-size: 15px;
+    }
+}
+
+@media only screen
+  and (max-device-width: 906px) {
+    html {
+      font-size: 14px;
+    }
+}
+
+@media only screen
+  and (max-device-width: 736px) {
+    html {
+      font-size: 12px;
+    }
+}
+
+@media only screen
+  and (max-device-width: 568px) {
+    html {
+      font-size: 10px;
+    }
+}
+
+@media only screen
+  and (max-device-width: 480px) {
+    html {
+      font-size: 9px;
+    }
+}
+
 /* ----------- iPhone 6 ----------- */
 
 /* Portrait and Landscape */
@@ -278,9 +334,7 @@
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
-  html {
-    font-size: 10px;
-  }
+
 }
 
 /* Portrait */
