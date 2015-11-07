@@ -27,8 +27,8 @@ export default class Profile extends React.Component {
     }, 0)
 
     return <div>
-
-      <h3><Gravatar email={this.state.user.email} https /> {this.state.user.name}</h3>
+      
+      <h3>{this.state.user.email ? <Gravatar email="this.state.user.email" https /> : ''} {this.state.user.name}</h3>
       <p>{this.state.user.checkins.length} checkins</p>
       <p>Total donations gathered: {charity_total / 100}€</p>
     </div>
