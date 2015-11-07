@@ -38,6 +38,14 @@ defmodule Donator.DonorRepository do
       Repo.all Donor
     end
 
+    def find_template_by_location(location_id) do
+      query = from donor in Donor,
+              where: fragment("templates.location": ["$eq": ^location_id]),
+              select: donor
+
+      Repo.one(query)
+    end
+
     def find_template_by_donor_and_location(donor_id, location_id) do
       query = from donor in Donor,
               where: donor.id == ^donor_id,
