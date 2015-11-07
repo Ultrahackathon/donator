@@ -72,7 +72,7 @@ export default class CheckIn extends React.Component {
 
    handleCheckIn = () => {
      console.log('Checked in!', this.state.selectedLocation, this.state.geolocation)
-     this.props.channel.push('check-in', { location: this.state.selectedLocation, geolocation: this.state.geolocation })
+     this.props.channel.push('check-in', { location: this.state.selectedLocation.venue, geolocation: this.state.geolocation })
      this.setState({modalIsOpen: false})
    }
 
