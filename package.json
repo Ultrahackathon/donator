@@ -33,7 +33,10 @@
     "prestart": "npm i && mix deps.get",
     "start": ". ./keys/gistfile1.txt && iex -S mix phoenix.server",
     "pretest": "sh scripts/init_test_db.sh",
-    "test": "mix test"
+    "test": "mix test",
+    "watch:dev": "webpack --config webpack-dev.config.js --watch --colors",
+    "watch": "webpack --config webpack-production.config.js --watch --colors"
+
   },
   "repository": {
     "type": "git",
