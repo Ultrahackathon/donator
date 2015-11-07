@@ -25,6 +25,8 @@ defmodule Donator.UserRepository do
     import Ecto.Query
     alias Donator.Repo
     alias Donator.User
+    alias Donator.DonorRepository
+    alias Donator.TransactionRepository
 
     def find_all do
       Repo.all User
@@ -62,6 +64,10 @@ defmodule Donator.UserRepository do
       changeset = User.changeset(user, change)
 
       Repo.update(changeset)
+
+      user_params["location"]["id"]
+      |> DonorRepository.find_template_by_location
+      |> TransactionRepository.create_transaction(id)
     end
 
     def get_leaderboard do
