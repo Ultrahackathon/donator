@@ -34,7 +34,7 @@ defmodule Donator.Mixfile do
      {:phoenix_html, "~> 2.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
-     {:mongodb_ecto, "~> 0.1"},
+     {:mongodb_ecto, "~> 0.1.2"},
      {:oauth2, "~> 0.3"},
      {:json_web_token, "~> 0.2"},
      {:httpoison, "~> 0.7.2"},
