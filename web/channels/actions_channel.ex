@@ -1,5 +1,6 @@
 defmodule Donator.ActionsChannel do
   use Phoenix.Channel
+  require Logger
   alias Donator.Foursquare
   alias Donator.UserRepository
   alias Donator.LocationRepository
@@ -18,13 +19,13 @@ defmodule Donator.ActionsChannel do
           success.(claims)
           {:noreply, socket}
         e ->
-          IO.inspect e
+          Logger.debug "#{inspect e}"
           error.(e)
           {:noreply, socket}
       end
       rescue
         e ->
-          IO.inspect e
+          Logger.debug "#{inspect e}"
           error.(e)
           {:noreply, socket}
     end
@@ -37,20 +38,25 @@ defmodule Donator.ActionsChannel do
   def handle_in("locations:near", payload, socket) do
     lat = payload["lat"]
     lng = payload["lng"]
+
     {:ok, venues} = Foursquare.get("#{lat},#{lng}")
     supported_locations = LocationRepository.find_all |> Enum.map(fn l -> l.foursquare_id end)
+
     venues = venues.body[:response]["venues"]
     |> Enum.filter(fn venue ->
       Enum.member? supported_locations, venue["id"]
     end)
-    IO.inspect(venues)
+
+    Logger.debug "#{inspect venues}"
+
     push socket, "locations:near", %{"venues": venues}
     {:noreply, socket}
   end
 
   def handle_in("check-in", payload, socket) do
     success = fn claims ->
-        IO.inspect(payload)
+        Logger.debug "#{inspect payload}"
+
         locations = LocationRepository.find_all |> Enum.map(fn l -> l.foursquare_id end)
 
         if Enum.member? locations, payload["location"]["id"] do
@@ -75,12 +81,11 @@ defmodule Donator.ActionsChannel do
         user = UserRepository.find_one_by_id(claims[:id])
         transactions = TransactionRepository.find_by_user(claims[:id])
 
-        IO.inspect(user)
+        Logger.debug "#{inspect user}"
         push socket, "user", %{user: user, transactions: transactions}
     end
 
     error = fn e ->
-        IO.inspect(e)
         push socket, "user", %{"user": nil}
     end
 
@@ -89,7 +94,9 @@ defmodule Donator.ActionsChannel do
 
   def handle_in("leaderboard", payload, socket) do
     leaderboard = UserRepository.get_leaderboard
-    IO.inspect leaderboard
+
+    Logger.debug "#{inspect leaderboard}"
+
     push socket, "leaderboard", %{"leaderboard": leaderboard}
     {:noreply, socket}
   end

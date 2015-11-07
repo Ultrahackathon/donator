@@ -39,7 +39,6 @@ defmodule Donator.TransactionRepository do
 
     def insert(transaction) do
         changeset = Transaction.changeset(%Transaction{}, transaction)
-        IO.inspect(changeset)
 
         case Repo.insert(changeset) do
             {:ok, transaction} -> {:ok, transaction: transaction}
@@ -56,8 +55,6 @@ defmodule Donator.TransactionRepository do
         "target_id": template.target_id,
         "sum": template.sum_per_checkin,
       }
-
-      IO.inspect transaction
 
       insert(transaction)
     end

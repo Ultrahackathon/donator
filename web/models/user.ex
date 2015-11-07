@@ -59,7 +59,7 @@ defmodule Donator.UserRepository do
 
     def add_checkin(id, user_params) do
       user = Repo.get!(User, id)
-      checkins = Map.take(user, [:checkins])[:checkins]
+      checkins = user.checkins
       change = %{"checkins": checkins ++ [user_params]}
       changeset = User.changeset(user, change)
 
