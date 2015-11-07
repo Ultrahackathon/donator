@@ -65,7 +65,7 @@ defmodule Donator.UserRepository do
 
       Repo.update(changeset)
 
-      user_params["location"]["venue"]["id"]
+      user_params["location"]["id"]
       |> DonorRepository.find_template_by_location
       |> TransactionRepository.create_transaction(id)
     end
