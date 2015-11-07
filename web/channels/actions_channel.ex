@@ -50,10 +50,7 @@ defmodule Donator.ActionsChannel do
     end)
     |> Enum.map(fn venue ->
       donor = DonorRepository.find_template_by_location venue["id"]
-      template = donor.templates |> List.first
-      target = TargetRepository.find_one_by_id template["target_id"]
-
-      %{venue: venue, donor: donor, target: target}
+      %{venue: venue, donor: donor}
     end)
 
     Logger.debug "#{inspect venues}"
