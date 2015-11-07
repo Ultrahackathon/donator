@@ -1,0 +1,114 @@
+html {
+  font-size: 16px;
+}
+
+header {
+  height: 100%;
+  background: #FFF546;
+  text-align: center;
+  background-image: radial-gradient(ellipse closest-corner at 50% 250% , rgb(255, 255, 255) 99.5%, #FFF546 0);
+  padding-bottom: 4%;
+}
+
+header .logo, header h1 {
+  display: inline-block;
+  margin:0 auto;
+  background-color: #22A022;
+  text-align: center;
+  height: 100%;
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+  padding: 0.3rem 0;
+  margin-bottom: -0.667rem;
+  color: White;
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+header .logout {
+  display: inline-block;
+  position: absolute;
+  left: 10%;
+  top: 5%;
+}
+
+header .logo {
+  color: white;
+  text-decoration: none;
+  padding: .5% 1%;
+}
+
+.container {
+  margin: auto;
+  width: 100%;
+}
+
+.container .content {
+  max-width: 80%;
+  margin: auto;
+}
+
+nav {
+  margin: auto;
+  text-align: center;
+}
+
+.nav-container {
+  border-top-left-radius: 95%;
+  border-top-right-radius: 95%;
+  position: fixed;
+  bottom: 0;
+  background: #FFF546;
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-container a {
+  text-decoration: none;
+  display: inline-block;
+  padding: .5%;
+  margin: .5%;
+  border-left: 0.0625rem solid #aaa9aa;
+  border-right: 0.0625rem solid #aaa9aa;
+  border-top-left-radius: 40%;
+  border-bottom-left-radius: 40%;
+  border-top-right-radius: 40%;
+  border-bottom-right-radius: 40%;
+  box-shadow: 0.0625rem 0.0625rem 0.3125rem #999;
+  color: #22A022;
+  width: 5rem;
+  background-color: #FFF546;
+}
+
+.nav-container .active {
+  box-shadow: -.1rem -.2rem 0.2rem #999;
+  background-color: #FFD046;
+  color: #508050;
+}
+
+.nav-container .icon-checkin {
+  font-size: 6rem;
+  display: inline-block;
+  background-image: radial-gradient(3rem at 50% 25% , #fff 0%, #FFF546 70%);
+}
+
+.nav-container .active .icon-checkin {
+  background-image: radial-gradient(3rem at 50% 25% , #fff 0%, #FFD046 70%);
+}
+
+.nav-container #checkin {
+  margin-top: -1rem;
+  border-top: 0.0625rem solid #aaa9aa;
+}
+
+.react-gravatar {
+    border-radius: 2rem;
+}
+
+.foursquare-icon {
+  background-color: #999;
+  border-radius: 2rem;
+  margin-right: 1rem;
+}
