@@ -3,6 +3,7 @@ defmodule Donator.ActionsChannel do
   alias Donator.Foursquare
   alias Donator.UserRepository
   alias Donator.LocationRepository
+  alias Donator.TransactionRepository
 
   def handle_socket_with_claims socket, success, error do
     jwt_config = Application.get_env(:donator, :jwt)
@@ -71,8 +72,10 @@ defmodule Donator.ActionsChannel do
   def handle_in("user", payload, socket) do
     success = fn claims ->
         user = UserRepository.find_one_by_id(claims[:id])
+        transactions = TransactionRepository.find_by_user(claims[:id])
+
         IO.inspect(user)
-        push socket, "user", user
+        push socket, "user", %{user: user, transactions: transactions}
     end
 
     error = fn e ->

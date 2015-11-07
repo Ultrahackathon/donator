@@ -29,6 +29,14 @@ defmodule Donator.TransactionRepository do
       Repo.all Transaction
     end
 
+    def find_by_user(user_id) do
+      query = from t in Transaction,
+              where: t.user_id == ^user_id,
+              select: t
+
+      Repo.all query
+    end
+
     def insert(transaction) do
         changeset = Transaction.changeset(%Transaction{}, transaction)
         IO.inspect(changeset)
