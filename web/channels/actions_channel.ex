@@ -101,7 +101,7 @@ defmodule Donator.ActionsChannel do
     end
 
     error = fn e ->
-        push socket, "user", %{"user": nil}
+        push socket, "user", %{"user": nil, "message": e}
     end
 
     handle_socket_with_claims socket, success, error
