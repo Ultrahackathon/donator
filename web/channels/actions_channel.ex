@@ -55,6 +55,7 @@ defmodule Donator.ActionsChannel do
 
         if Enum.member? locations, payload["location"]["id"] do
           UserRepository.add_checkin(claims[:id], payload)
+          broadcast! socket, "feed", %{"name": claims[:name], "location": payload["location"]["name"]}
           push socket, "check-in", %{"success": true}
         else
           push socket, "check-in", %{"success": false, "message": "Check-in not allowed in this location!"}
@@ -90,6 +91,11 @@ defmodule Donator.ActionsChannel do
     leaderboard = UserRepository.get_leaderboard
     IO.inspect leaderboard
     push socket, "leaderboard", %{"leaderboard": leaderboard}
+    {:noreply, socket}
+  end
+
+  def handle_out("feed", payload, socket) do
+    push socket, "feed", payload
     {:noreply, socket}
   end
 
