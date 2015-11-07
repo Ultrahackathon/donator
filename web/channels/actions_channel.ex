@@ -98,6 +98,7 @@ defmodule Donator.ActionsChannel do
         transactions = TransactionRepository.find_by_user(claims[:id])
 
         Logger.debug "#{inspect user}"
+        Logger.debug "#{inspect transactions}"
         push socket, "user", %{user: user, transactions: transactions}
     end
 
