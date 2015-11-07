@@ -24,16 +24,16 @@ html {
 
 header {
   height: 100%;
-  background: #FFFF55;
+  background: #FFF546;
   text-align: center;
-  background-image: radial-gradient(ellipse closest-corner at 50% 250% , rgb(255, 255, 255) 99.5%, #FFFF55 0px);
+  background-image: radial-gradient(ellipse closest-corner at 50% 250% , rgb(255, 255, 255) 99.5%, #FFF546 0px);
   padding-bottom: 4%;
 }
 
-header #logo, header h1 {
+header .logo, header h1 {
   display: inline-block;
   margin:0 auto;
-  background-color: ForestGreen;
+  background-color: #22A022;
   text-align: center;
   height: 100%;
   border-bottom-left-radius: 15px;
@@ -42,11 +42,20 @@ header #logo, header h1 {
   margin-bottom: -10px;
   color: White;
   font-size: 3rem;
+  font-weight: 400;
 }
 
-header #logo {
+header .logout {
+  display: inline-block;
+  position: absolute;
+  left: 10%;
+  top: 5%;
+}
+
+header .logo {
   color: white;
   text-decoration: none;
+  padding: .5% 1%;
 }
 
 .container {
@@ -69,21 +78,18 @@ nav {
   border-top-right-radius: 95%;
   position: fixed;
   bottom: 0;
-  background: #FFFF55;
+  background: #FFF546;
   text-align: center;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.nav-container [class^="icon-"] {
-  /*padding: 0 1rem;*/
-}
-
 .nav-container a {
   text-decoration: none;
   display: inline-block;
-  padding: 1%;
+  padding: .5%;
+  margin: .5%;
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-top-left-radius: 40%;
@@ -91,6 +97,14 @@ nav {
   border-top-right-radius: 40%;
   border-bottom-right-radius: 40%;
   box-shadow: 1px 1px 5px #999;
+  color: #22A022;
+  width: 5rem;
+}
+
+.nav-container .icon-checkin {
+  font-size: 6rem;
+  display: inline-block;
+  background-image: radial-gradient(3rem at 50% 25% , #fff 0%, #FFF546 90%);
 }
 
 [class^="icon-"], [class*=" icon-"] {
@@ -108,17 +122,11 @@ nav {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-map:before {
-  content: "\e902";
+.icon-gear:before {
+  content: "\f02f";
 }
-.icon-Checkin .path1:before {
-  content: "\e900";
-  color: rgb(115, 98, 98);
-}
-.icon-Checkin .path2:before {
-  content: "\e901";
-  margin-left: -0.4453125em;
-  color: rgb(255, 4, 4);
+.icon-undo2:before {
+  content: "\e906";
 }
 .icon-user:before {
   content: "\e903";
@@ -128,4 +136,29 @@ nav {
 }
 .icon-list-numbered:before {
   content: "\e905";
+}
+.icon-exit:before {
+  content: "\e907";
+}
+.icon-google:before {
+  content: "\e908";
+}
+.icon-facebook2:before {
+  content: "\e909";
+}
+.icon-facebook3:before {
+  content: "\e90a";
+}
+.icon-github:before {
+  content: "\e90b";
+}
+.icon-github4:before {
+  content: "\e90c";
+}
+.icon-map:before {
+  content: "\e902";
+}
+
+.icon-checkin:before {
+	content: "\e900";
 }

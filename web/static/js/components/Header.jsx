@@ -5,7 +5,7 @@ export default class Header extends React.Component {
   render() {
     let logout = null
     if (this.props.isAuthenticated) {
-      logout = (<Link to="/" onClick={this.props.logout}>Logout</Link>)
+      logout = (<Link to="/" className="logout" onClick={this.props.logout}>Logout</Link>)
     }
     return (
       <header>
