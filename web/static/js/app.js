@@ -13,7 +13,6 @@ render((
   <Router>
     <Route path="/" component={DonatorApp}>
       <Route path="signin" component={SignIn} />
-      <IndexRoute component={Feed} />
       <Route path="feed" component={Feed} />
       <Route path="map" component={MapPage} />
       <Route path="checkin" component={CheckIn} />

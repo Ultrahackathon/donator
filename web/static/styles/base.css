@@ -102,10 +102,20 @@ nav {
   background-color: #FFF546;
 }
 
+.nav-container .active {
+  box-shadow: -.1rem -.2rem 0.2rem #999;
+  background-color: #FFD046;
+  color: #508050;
+}
+
 .nav-container .icon-checkin {
   font-size: 6rem;
   display: inline-block;
-  background-image: radial-gradient(3rem at 50% 25% , #fff 0%, #FFF546 90%);
+  background-image: radial-gradient(3rem at 50% 25% , #fff 0%, #FFF546 70%);
+}
+
+.nav-container .active .icon-checkin {
+  background-image: radial-gradient(3rem at 50% 25% , #fff 0%, #FFD046 70%);
 }
 
 .nav-container #checkin {

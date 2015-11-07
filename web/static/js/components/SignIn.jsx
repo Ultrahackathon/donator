@@ -4,7 +4,7 @@ import Login from './Login'
 export default class Feed extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
-    this.props.history.pushState(null, '/')
+    this.props.history.pushState(null, '/feed')
   }
 
   render() {

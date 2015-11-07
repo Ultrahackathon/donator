@@ -49,6 +49,9 @@ export default class DonatorApp extends React.Component {
     if (!this.state.isAuthenticated && this.props.location.pathname !== '/signin') {
       this.props.history.pushState(null, '/signin')
     }
+    if (this.state.isAuthenticated && this.props.location.pathname === '/') {
+      this.props.history.pushState(null, '/feed')
+    }
   }
 
   logout = () => {
