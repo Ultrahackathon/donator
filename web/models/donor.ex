@@ -33,6 +33,7 @@ defmodule Donator.DonorRepository do
     import Ecto.Query
     alias Donator.Repo
     alias Donator.Donor
+    alias Donator.Target
 
     def find_all do
       Repo.all Donor
@@ -40,10 +41,11 @@ defmodule Donator.DonorRepository do
 
     def find_template_by_location(location_id) do
       query = from donor in Donor,
-              where: fragment("templates.location": ["$eq": ^location_id]),
-              select: donor
+              where: fragment("templates": ["$elemMatch": ["location": ^location_id]]),
+              select: {donor.id, donor.name,fragment("templates": ["$elemMatch": ["location": ^location_id]])}
 
-      Repo.one(query)
+      {id, name, templates} = Repo.one(query)
+      %{"id": id, "name": name, "templates": templates["templates"]}
     end
 
     def find_template_by_donor_and_location(donor_id, location_id) do

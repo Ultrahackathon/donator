@@ -52,8 +52,8 @@ defmodule Donator.TransactionRepository do
       transaction = %{
         "user_id": user_id,
         "donor_id": donor.id,
-        "target_id": template.target_id,
-        "sum": template.sum_per_checkin,
+        "target_id": template["target_id"],
+        "sum": template["sum_per_checkin"],
       }
 
       insert(transaction)
