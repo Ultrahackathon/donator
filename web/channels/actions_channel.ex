@@ -93,6 +93,7 @@ defmodule Donator.ActionsChannel do
 
   def handle_in("user", payload, socket) do
     success = fn claims ->
+        Logger.debug "#{inspect claims}"
         user = UserRepository.find_one_by_id(claims[:id])
         transactions = TransactionRepository.find_by_user(claims[:id])
 

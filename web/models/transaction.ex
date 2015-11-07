@@ -22,6 +22,7 @@ end
 
 defmodule Donator.TransactionRepository do
     import Ecto.Query
+    require Logger
     alias Donator.Repo
     alias Donator.Transaction
 
@@ -30,6 +31,7 @@ defmodule Donator.TransactionRepository do
     end
 
     def find_by_user(user_id) do
+      Logger.debug user_id
       query = from t in Transaction,
               where: t.user_id == ^user_id,
               select: t
