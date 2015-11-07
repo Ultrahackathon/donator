@@ -53,6 +53,11 @@ defmodule Donator.ActionsChannel do
     {:noreply, socket}
   end
 
+  def handle_in("locations:all", payload, socket) do
+    push socket, "locations:all", %{"locations": LocationRepository.find_all}
+    {:noreply, socket}
+  end
+
   def handle_in("check-in", payload, socket) do
     success = fn claims ->
         Logger.debug "#{inspect payload}"
