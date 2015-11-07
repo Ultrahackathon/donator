@@ -26,7 +26,7 @@ header {
   height: 100%;
   background: #FFF546;
   text-align: center;
-  background-image: radial-gradient(ellipse closest-corner at 50% 250% , rgb(255, 255, 255) 99.5%, #FFF546 0px);
+  background-image: radial-gradient(ellipse closest-corner at 50% 250% , rgb(255, 255, 255) 99.5%, #FFF546 0);
   padding-bottom: 4%;
 }
 
@@ -36,10 +36,10 @@ header .logo, header h1 {
   background-color: #22A022;
   text-align: center;
   height: 100%;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  padding: 5px 0;
-  margin-bottom: -10px;
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+  padding: 0.3rem 0;
+  margin-bottom: -0.667rem;
   color: White;
   font-size: 3rem;
   font-weight: 400;
@@ -63,7 +63,7 @@ header .logo {
   width: 100%;
 }
 
-.container > div > header + div {
+.container .content {
   max-width: 80%;
   margin: auto;
 }
@@ -90,21 +90,27 @@ nav {
   display: inline-block;
   padding: .5%;
   margin: .5%;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-left: 0.0625rem solid black;
+  border-right: 0.0625rem solid black;
   border-top-left-radius: 40%;
   border-bottom-left-radius: 40%;
   border-top-right-radius: 40%;
   border-bottom-right-radius: 40%;
-  box-shadow: 1px 1px 5px #999;
+  box-shadow: 0.0625rem 0.0625rem 0.3125rem #999;
   color: #22A022;
   width: 5rem;
+  background-color: #FFF546;
 }
 
 .nav-container .icon-checkin {
   font-size: 6rem;
   display: inline-block;
   background-image: radial-gradient(3rem at 50% 25% , #fff 0%, #FFF546 90%);
+}
+
+.nav-container #checkin {
+  margin-top: -1rem;
+  border-top: 0.0625rem solid black;
 }
 
 [class^="icon-"], [class*=" icon-"] {
@@ -120,6 +126,11 @@ nav {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-list-ol:before {
+	content: "\e901";
 }
 
 .icon-gear:before {

@@ -7,11 +7,11 @@ export default class Navigation extends React.Component {
     return (
       <div className="nav-container">
         <nav>
-          <Link to="/feed"><span className="icon-users" /></Link>&nbsp;
-          <Link to="/map" alt="Map"><span className="icon-map" /></Link>&nbsp;
-          <Link to="/checkin" alt="Check-in"><span className="icon-checkin" /></Link>&nbsp;
-          <Link to="/leaderboard"><span className="icon-list-numbered" /></Link>&nbsp;
-          <Link to="/profile"><span className="icon-user" /></Link>&nbsp;
+          <Link id="feed" to="/feed"><span className="icon-users" /></Link>&nbsp;
+          <Link id="map" to="/map" alt="Map"><span className="icon-map" /></Link>&nbsp;
+          <Link id="checkin" to="/checkin" alt="Check-in"><span className="icon-checkin" /></Link>&nbsp;
+          <Link id="leaderboard" to="/leaderboard"><span className="icon-list-ol" /></Link>&nbsp;
+          <Link id="profile" to="/profile"><span className="icon-user" /></Link>&nbsp;
         </nav>
       </div>
     )
