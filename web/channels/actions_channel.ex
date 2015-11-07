@@ -68,7 +68,9 @@ defmodule Donator.ActionsChannel do
 
         if Enum.member? locations, payload["location"]["id"] do
           UserRepository.add_checkin(claims[:id], payload)
-          broadcast! socket, "feed", %{"name": claims[:name], "location": payload["location"]["name"]}
+          email = Base.encode16(:erlang.md5(claims[:email]), case: :lower)
+
+          broadcast! socket, "feed", %{"email": email, "name": claims[:name], "location": payload["location"]["name"]}
           push socket, "check-in", %{"success": true}
         else
           push socket, "check-in", %{"success": false, "message": "Check-in not allowed in this location!"}
