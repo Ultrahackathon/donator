@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route } from 'react-router'
+import { Router, Route, IndexRoute } from 'react-router'
 import DonatorApp from './components/DonatorApp'
 import Feed from './components/Feed'
 import SignIn from './components/SignIn'
@@ -13,6 +13,7 @@ render((
   <Router>
     <Route path="/" component={DonatorApp}>
       <Route path="signin" component={SignIn} />
+      <IndexRoute component={Feed} />
       <Route path="feed" component={Feed} />
       <Route path="map" component={MapPage} />
       <Route path="checkin" component={CheckIn} />

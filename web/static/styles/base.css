@@ -13,20 +13,24 @@
   font-style: normal;
 }
 
-
 @media (min-width: 768px) {
   .container {
-    max-width: 730px;
   }
 }
 
-header, .nav-container {
+html {
+  font-size: 16px;
+}
+
+header {
   height: 100%;
   background: #FFFF55;
   text-align: center;
+  background-image: radial-gradient(ellipse closest-corner at 50% 250% , rgb(255, 255, 255) 99.5%, #FFFF55 0px);
+  padding-bottom: 4%;
 }
 
-header a, header h1 {
+header #logo, header h1 {
   display: inline-block;
   margin:0 auto;
   background-color: ForestGreen;
@@ -37,15 +41,20 @@ header a, header h1 {
   padding: 5px 0;
   margin-bottom: -10px;
   color: White;
-  z-index: 9999;
+  font-size: 3rem;
 }
 
-header a {
+header #logo {
   color: white;
   text-decoration: none;
 }
 
 .container {
+  margin: auto;
+  width: 100%;
+}
+
+.container > div > header + div {
   max-width: 80%;
   margin: auto;
 }
@@ -53,6 +62,35 @@ header a {
 nav {
   margin: auto;
   text-align: center;
+}
+
+.nav-container {
+  border-top-left-radius: 95%;
+  border-top-right-radius: 95%;
+  position: fixed;
+  bottom: 0;
+  background: #FFFF55;
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-container [class^="icon-"] {
+  /*padding: 0 1rem;*/
+}
+
+.nav-container a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 1%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top-left-radius: 40%;
+  border-bottom-left-radius: 40%;
+  border-top-right-radius: 40%;
+  border-bottom-right-radius: 40%;
+  box-shadow: 1px 1px 5px #999;
 }
 
 [class^="icon-"], [class*=" icon-"] {
