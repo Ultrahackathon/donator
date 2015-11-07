@@ -79,8 +79,8 @@ nav {
   display: inline-block;
   padding: .5%;
   margin: .5%;
-  border-left: 0.0625rem solid black;
-  border-right: 0.0625rem solid black;
+  border-left: 0.0625rem solid #aaa9aa;
+  border-right: 0.0625rem solid #aaa9aa;
   border-top-left-radius: 40%;
   border-bottom-left-radius: 40%;
   border-top-right-radius: 40%;
@@ -109,7 +109,7 @@ nav {
 
 .nav-container #checkin {
   margin-top: -1rem;
-  border-top: 0.0625rem solid black;
+  border-top: 0.0625rem solid #aaa9aa;
 }
 
 .react-gravatar {
