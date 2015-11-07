@@ -112,4 +112,6 @@ nav {
   border-top: 0.0625rem solid black;
 }
 
+.react-gravatar {
+    border-radius: 2rem;
 }

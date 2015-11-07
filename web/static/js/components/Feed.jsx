@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import Gravatar from 'react-gravatar'
 
 export default class Feed extends React.Component {
   constructor(props) {
@@ -16,9 +17,9 @@ export default class Feed extends React.Component {
 
   render() {
     return <div>
-      <h2>This is the Feed</h2>
+      <h2>Happening nearby</h2>
       {this.state.feed.map((f) => {
-        return <p>{f.name} - {f.location}</p>
+        return <p><Gravatar md5={f.email} https /> {f.name} - {f.location}</p>
       })}
     </div>
   }

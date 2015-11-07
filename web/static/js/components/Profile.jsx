@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import Gravatar from 'react-gravatar'
 
 export default class Profile extends React.Component {
   constructor(props) {
@@ -26,10 +27,10 @@ export default class Profile extends React.Component {
     }, 0)
 
     return <div>
-      <h2>This is the Profile</h2>
-      <h3>{this.state.user.name} - {this.state.user.checkins.length} checkins</h3>
-      <p>{this.state.user.email}</p>
-      <p>Charity total: {charity_total / 100}€</p>
+
+      <h3><Gravatar email={this.state.user.email} https /> {this.state.user.name}</h3>
+      <p>{this.state.user.checkins.length} checkins</p>
+      <p>Total donations gathered: {charity_total / 100}€</p>
     </div>
   }
 }
