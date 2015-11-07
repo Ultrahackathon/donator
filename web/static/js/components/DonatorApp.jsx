@@ -18,20 +18,23 @@ export default class DonatorApp extends React.Component {
   }
 
   componentWillMount() {
-    let socket = new Socket('/socket', {params: {token: document.cookie.split('=')[1]}})
-    socket.connect()
-    let channel = socket.channel('actions', {token: document.cookie.split('=')[1]})
-    this.setState({channel: channel})
+    if (document.cookie.indexOf('token') !== -1) {
+      let token = document.cookie.split('token=')[1]
+      let socket = new Socket('/socket', {params: {token: token}})
+      socket.connect()
+      let channel = socket.channel('actions', {token: token})
+      this.setState({channel: channel})
 
-    channel.join()
-      .receive('ok', ({messages}) => {
-        this.setState({isAuthenticated: true})
-      })
-      .receive('error', ({reason}) => {
-        console.log('failed join', reason)
-        this.setState({isAuthenticated: false})
-      } )
-      .receive('timeout', () => console.log('Networking issue. Still waiting...') )
+      channel.join()
+        .receive('ok', ({messages}) => {
+          this.setState({isAuthenticated: true})
+        })
+        .receive('error', ({reason}) => {
+          console.log('failed join', reason)
+          this.setState({isAuthenticated: false})
+        } )
+        .receive('timeout', () => console.log('Networking issue. Still waiting...') )
+    }
 
     if (!this.state.isAuthenticated) {
       this.props.history.pushState(null, '/signin')
