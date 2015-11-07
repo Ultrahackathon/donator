@@ -8,33 +8,28 @@ export default class Map extends React.Component {
     this.state = {
       geolocation: [60.192932, 24.946743800000004], // default center Ultrahack
       locations: [],
-      markers: [{
-     		position: {
-    		lat: 25.0112183,
-    		lng: 121.52067570000001,
-    	},
-    	key: "Taiwan",
-    	defaultAnimation: 2
-    	}],
+      markers: [],
     }
   }
 
   componentWillMount() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition( (pos) => {
-        
-        this.setState({geolocation: [pos.coords.latitude, pos.coords.longitude]})
 
-        //console.log(this.state.geolocation[0])
+        this.setState({geolocation: [pos.coords.latitude, pos.coords.longitude]})
+        this.props.channel.on('locations:all', payload => {
+          const markers = payload.locations.map(location => {
+            return {position: {lat: parseFloat(location.lat), lng: parseFloat(location.lng)}}
+          })
+
+          this.setState({markers: markers})
+        })
+        this.props.channel.push('locations:all')
       })
     } else {
       this.setState({geolocation: [25.0112183, 121.52067570000001]})
     }
 
-  }
-  
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.geolocation !== this.state.geolocation
   }
 
   componentWillUpdate(nextProps, nextState) {
