@@ -15,7 +15,6 @@ export default class Map extends React.Component {
   componentWillMount() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition( (pos) => {
-
         this.setState({geolocation: [pos.coords.latitude, pos.coords.longitude]})
         this.props.channel.on('locations:all', payload => {
           const markers = payload.locations.map(location => {
@@ -32,13 +31,7 @@ export default class Map extends React.Component {
 
   }
 
-  componentWillUpdate(nextProps, nextState) {
-  	console.log("will update", this.state.geolocation)
-  }
-
-
   render() {
-  	console.log("rend", this.state.geolocation)
     return (
    <div>
       <GoogleMap containerProps={{
