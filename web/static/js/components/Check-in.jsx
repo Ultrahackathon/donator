@@ -63,7 +63,7 @@ export default class CheckIn extends React.Component {
    }
 
    openModal(loc) {
-     this.setState({modalIsOpen: true, selectedLocation: loc})
+     this.setState({modalIsOpen: true, selectedLocation: loc.venue})
    }
 
    closeModal = () => {
@@ -83,7 +83,7 @@ export default class CheckIn extends React.Component {
         <p>Location: {this.state.geolocation.join(',')}</p>
         <ul>
           {this.state.locations.map( (loc) => {
-            return <li key={loc.id}><a onClick={this.openModal.bind(this, loc)}>{loc.name}</a></li>
+            return <li key={loc.venue.id}><a onClick={this.openModal.bind(this, loc)}>{loc.venue.name}</a></li>
           })}
         </ul>
         <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} styles={customStyles}>
