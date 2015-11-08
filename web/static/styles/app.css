@@ -118,6 +118,10 @@ header .logo {
   margin-bottom: .2rem;
 }
 
+.icon.disabled > span {
+  color: #eee;
+}
+
 @-moz-keyframes whirly-loader {
   0% {
     -moz-transform: rotate(0deg);
