@@ -15,14 +15,17 @@ var donors = [
       {"max_sum": 10000, "sum_per_checkin": 5, "location": "4af5e40ff964a52061fe21e3", "target_id": "563d1d9c93e3d39d8ea8251f"},
       {"max_sum": 10000, "sum_per_checkin": 5, "location": "5479be61498ee2521eaffa02", "target_id": "563d1d9c93e3d39d8ea8251f"},
       {"max_sum": 10000, "sum_per_checkin": 5, "location": "51805895e4b0dce6ddc1d0cd", "target_id": "563d1d9c93e3d39d8ea8251f"},
-      {"max_sum": 10000, "sum_per_checkin": 5, "location": "4ce4c534637c6ea8995a5a42", "target_id": "563d1d9c93e3d39d8ea8251f"}
+      {"max_sum": 10000, "sum_per_checkin": 5, "location": "4ce4c534637c6ea8995a5a42", "target_id": "563d1d9c93e3d39d8ea8251f"},
+      {"max_sum": 10000, "sum_per_checkin": 3, "location": "50065d2ae4b0ece405c9bbf9", "target_id": "563d1d9c93e3d39d8ea8251f"}
     ]
   },
   {
     "_id" : ObjectId("663d0d9c93e3d39d8ea8251f"),
     "name": "slush",
     "templates": [
-      {"max_sum": 10000, "sum_per_checkin": 50, "location": "557be455498e1dcc6bc34d45", "target_id": "563d0d9c93e3d39d8ea8251f"}
+      {"max_sum": 10, "sum_per_checkin": 50, "location": "557be455498e1dcc6bc34d45", "target_id": "563d0d9c93e3d39d8ea8251f"},
+      {"max_sum": 10, "sum_per_checkin": 10, "location": "563cfb9ecd10033088b8009b", "target_id": "563d0d9c93e3d39d8ea8251f"},
+      {"max_sum": 10, "sum_per_checkin": 10, "location": "50c0f510e4b0c9670fa58d3a", "target_id": "563d0d9c93e3d39d8ea8251f"}
     ]
   },
 ]
