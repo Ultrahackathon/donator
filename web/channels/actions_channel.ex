@@ -79,9 +79,27 @@ defmodule Donator.ActionsChannel do
           UserRepository.add_checkin(claims[:id], payload)
 
           email = claims[:email] && Crypto.md5(claims[:email]) || ""
-          feed = %{"email": email, "name": claims[:name], "location": payload["location"]["name"]}
 
-          broadcast! socket, "feed", %{feed: feed}
+          template = payload["location"]["id"]
+          |> DonorRepository.find_template_by_location
+          |> (fn donor ->
+            donor.templates |> List.first
+          end).()
+
+          sum = template |> Map.get("sum_per_checkin")
+          target = template
+          |> Map.get("target_id")
+          |> TargetRepository.find_one_by_id
+
+          feed = %{
+            "email": email,
+            "name": claims[:name],
+            "location": payload["location"]["name"],
+            "sum": sum,
+            "target": target.name
+          }
+
+          broadcast! socket, "feed", %{feed: [feed]}
           push socket, "check-in", %{"success": true}
         else
           push socket, "check-in", %{"success": false, "message": "Check-in not allowed in this location!"}

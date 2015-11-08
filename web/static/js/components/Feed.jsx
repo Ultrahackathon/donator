@@ -29,7 +29,7 @@ export default class Feed extends React.Component {
     return <div>
       <h2>Happening nearby</h2>
       {this.state.feed.map((f) => {
-        return <p>{f.email ? <Gravatar md5={f.email} https /> : ""} {f.name} - {f.location}</p>
+        return <p>{f.email ? <Gravatar md5={f.email} https /> : ""} {f.name} - {f.location} - {f.target} - {f.sum / 100}</p>
       })}
     </div>
   }

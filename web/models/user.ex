@@ -28,6 +28,7 @@ defmodule Donator.UserRepository do
     alias Donator.DonorRepository
     alias Donator.TransactionRepository
     alias Donator.Crypto
+    alias Donator.TargetRepository
 
     def find_all do
       Repo.all User
@@ -40,8 +41,25 @@ defmodule Donator.UserRepository do
         name = user.name
 
         user.checkins
-        |> Enum.map(fn c ->
-          %{"name": name, "email": Crypto.md5(email), "location": c["location"]["name"]}
+        |> Enum.map(fn checkin ->
+          template = checkin["location"]["id"]
+          |> DonorRepository.find_template_by_location
+          |> (fn donor ->
+            donor.templates |> List.first
+          end).()
+
+          sum = template |> Map.get("sum_per_checkin")
+          target = template
+          |> Map.get("target_id")
+          |> TargetRepository.find_one_by_id
+
+          %{
+            "name": name,
+            "email": Crypto.md5(email),
+            "location": checkin["location"]["name"],
+            "sum": sum,
+            "target": target.name
+          }
         end)
       end)
       |> List.flatten
