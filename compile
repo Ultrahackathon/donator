@@ -1,2 +1,2 @@
-npm build
+npm run build
 mix phoenix.digest
