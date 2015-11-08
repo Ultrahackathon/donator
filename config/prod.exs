@@ -13,10 +13,16 @@ use Mix.Config
 # which you typically run after static files are built.
 config :donator, Donator.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "app.donator.io", port: 80]
+  # url: [host: "app.donator.io", port: 80]
+  url: [scheme: "https", host: "still-caverns-5246.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # Do not print debug messages in production
 #config :logger, level: :info
+
+config :donator, Donator.Repo,
+  url: System.get_env("MONGOLAB_URI")
 
 # ## SSL Support
 #
@@ -57,4 +63,4 @@ config :donator, Donator.Endpoint,
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+# import_config "prod.secret.exs"
