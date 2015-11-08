@@ -14,7 +14,7 @@ use Mix.Config
 config :donator, Donator.Endpoint,
   http: [port: {:system, "PORT"}],
   # url: [host: "app.donator.io", port: 80]
-  url: [host: "still-caverns-5246.herokuapp.com", port: 80],
+  url: [host: "h.donator.io", port: 80],
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 config :donator, Donator.Repo,
