@@ -10,6 +10,7 @@ header {
   padding-bottom: 4%;
   position: fixed;
   top: 0;
+  z-index: 10;
 }
 
 header .logo, header h1 {
@@ -30,8 +31,14 @@ header .logo, header h1 {
 header .logout {
   display: inline-block;
   position: absolute;
-  left: 10%;
-  top: 5%;
+  right: 6rem;
+  top: 2rem;
+  text-decoration: none;
+  color: #22A022;
+}
+
+header .logout span {
+  font-size: 2rem;
 }
 
 header .logo {
@@ -49,7 +56,8 @@ header .logo {
   max-width: 80%;
   margin: auto;
   text-align: center;
-  margin-top: -2rem;
+  margin-top: 9rem;
+  padding-bottom: 6rem;
 }
 
 nav {
@@ -69,7 +77,7 @@ nav {
   margin-right: auto;
 }
 
-.nav-container a {
+.nav-button {
   text-decoration: none;
   display: inline-block;
   padding: .5%;
@@ -86,23 +94,23 @@ nav {
   background-color: #FFF546;
 }
 
-.nav-container .active {
+.nav-button.active {
   box-shadow: -.1rem -.2rem 0.2rem #999;
   background-color: #FFD046;
   color: #508050;
 }
 
-.nav-container .icon-checkin2 {
+.nav-button .icon-checkin2 {
   font-size: 5.5rem;
   display: inline-block;
   background-image: radial-gradient(3rem at 50% 25% , #fff 30%, #FFF546 45%);
 }
 
-.nav-container .active .icon-checkin2 {
+.nav-button.active .icon-checkin2 {
   background-image: radial-gradient(3rem at 50% 25% , #fff 30%, #FFD046 45%);
 }
 
-.nav-container #checkin {
+.nav-button#checkin {
   margin-top: -1rem;
   border-top: 0.0625rem solid #aaa9aa;
 }
@@ -115,4 +123,13 @@ nav {
   background-color: #999;
   border-radius: 2rem;
   margin-right: 1rem;
+}
+
+.google-maps {
+  position: relative;
+  background-color: #E5E3DF;
+  overflow: hidden;
+  height: 37.5rem;
+  width: 37.5rem;
+  margin: auto;
 }

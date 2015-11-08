@@ -39,10 +39,7 @@ export default class Map extends React.Component {
    <div>
       <GoogleMap containerProps={{
           ...this.props,
-          style: {
-            height: "300px",
-            width: "300px"
-          },
+          className: "google-maps"
         }}
         ref="map"
         defaultZoom={14}

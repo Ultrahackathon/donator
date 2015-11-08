@@ -8,7 +8,8 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    'z-index'             : '11;'
   }
 }
 
@@ -88,7 +89,7 @@ export default class CheckIn extends React.Component {
     let modal
     if (this.state.selectedLocation) {
       let location = this.state.selectedLocation
-      modal = (<Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} styles={customStyles}>
+      modal = (<Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} style={customStyles}>
         <h3><img className="foursquare-icon" src={location.venue.categories[0].icon.prefix + '100' + location.venue.categories[0].icon.suffix} alt="" />{location.venue.name}</h3>
         <p>Address: {location.venue.location.formattedAddress.join(', ')}</p>
         <p>Phone: {location.venue.contact.formattedPhone}</p>
