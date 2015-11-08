@@ -7,6 +7,7 @@ defmodule Donator.ActionsChannel do
   alias Donator.TransactionRepository
   alias Donator.DonorRepository
   alias Donator.TargetRepository
+  alias Donator.Crypto
 
   def handle_socket_with_claims socket, success, error do
     jwt_config = Application.get_env(:donator, :jwt)
@@ -74,9 +75,10 @@ defmodule Donator.ActionsChannel do
         if Enum.member? locations, payload["location"]["id"] do
           UserRepository.add_checkin(claims[:id], payload)
 
-          email = claims[:email] && Base.encode16(:erlang.md5(claims[:email]), case: :lower) || ""
+          email = claims[:email] && Crypto.md5(claims[:email]) || ""
+          feed = %{"email": email, "name": claims[:name], "location": payload["location"]["name"]}
 
-          broadcast! socket, "feed", %{"email": email, "name": claims[:name], "location": payload["location"]["name"]}
+          broadcast! socket, "feed", %{feed: feed}
           push socket, "check-in", %{"success": true}
         else
           push socket, "check-in", %{"success": false, "message": "Check-in not allowed in this location!"}
@@ -126,6 +128,13 @@ defmodule Donator.ActionsChannel do
     target = TargetRepository.find_one_by_id template["target_id"]
 
     push socket, "donor", %{"donor": donor, "target": target}
+    {:noreply, socket}
+  end
+
+  def handle_in("feed", _, socket) do
+    Logger.debug "Fetch feed"
+
+    push socket, "feed", %{feed: UserRepository.find_all_checkins}
     {:noreply, socket}
   end
 

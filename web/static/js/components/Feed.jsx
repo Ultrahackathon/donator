@@ -18,8 +18,10 @@ export default class Feed extends React.Component {
   componentDidMount() {
     if (this.props.isAuthenticated) {
       this.props.channel.on('feed', payload => {
-        this.setState({feed: this.state.feed.concat([payload])})
+        this.setState({feed: this.state.feed.concat(payload.feed)})
       })
+
+      this.props.channel.push('feed')
     }
   }
 

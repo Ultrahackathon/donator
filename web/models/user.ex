@@ -27,13 +27,24 @@ defmodule Donator.UserRepository do
     alias Donator.User
     alias Donator.DonorRepository
     alias Donator.TransactionRepository
+    alias Donator.Crypto
 
     def find_all do
       Repo.all User
     end
 
     def find_all_checkins do
-      find_all |> Enum.map(fn u -> u.checkins end)
+      find_all
+      |> Enum.map(fn user ->
+        email = user.email || ""
+        name = user.name
+
+        user.checkins
+        |> Enum.map(fn c ->
+          %{"name": name, "email": Crypto.md5(email), "location": c["location"]["name"]}
+        end)
+      end)
+      |> List.flatten
     end
 
     def find_one_by_provider_id(provider, user_id) do
