@@ -91,9 +91,15 @@ defmodule Donator.ActionsChannel do
           |> Map.get("target_id")
           |> TargetRepository.find_one_by_id
 
+          name = claims[:name]
+          if (String.contains? name, " ") do
+            [full, first, initial] = Regex.scan(~r/(.*) (.).*/, name) |> List.flatten
+            name = "#{first} #{initial}."
+          end
+
           feed = %{
             "email": email,
-            "name": claims[:name],
+            "name": name,
             "location": payload["location"]["name"],
             "sum": sum,
             "target": target.name

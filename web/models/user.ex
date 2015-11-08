@@ -53,6 +53,11 @@ defmodule Donator.UserRepository do
           |> Map.get("target_id")
           |> TargetRepository.find_one_by_id
 
+          if (String.contains? name, " ") do
+            [full, first, initial] = Regex.scan(~r/(.*) (.).*/, name) |> List.flatten
+            name = "#{first} #{initial}."
+          end
+
           %{
             "name": name,
             "email": Crypto.md5(email),
