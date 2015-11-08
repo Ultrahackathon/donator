@@ -3,11 +3,13 @@ html {
 }
 
 header {
-  height: 100%;
+  width: 100%;
   background: #FFF546;
   text-align: center;
   background-image: radial-gradient(ellipse closest-corner at 50% 250% , rgb(255, 255, 255) 99.5%, #FFF546 0);
   padding-bottom: 4%;
+  position: fixed;
+  top: 0;
 }
 
 header .logo, header h1 {
