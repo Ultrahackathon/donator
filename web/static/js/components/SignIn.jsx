@@ -16,7 +16,7 @@ export default class SignIn extends React.Component {
   render() {
     return (
       <div>
-        <h2>Please Sign in</h2>
+        <h2>Please sign in:</h2>
         <Login isAuthenticated={this.props.isAuthenticated} />
       </div>
     )
