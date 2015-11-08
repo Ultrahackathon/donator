@@ -7,7 +7,7 @@ header {
   background: #FFF546;
   text-align: center;
   background-image: radial-gradient(ellipse closest-corner at 50% 250% , rgb(255, 255, 255) 99.5%, #FFF546 0);
-  padding-bottom: 4%;
+  padding-bottom: 4rem;
   position: fixed;
   top: 0;
   z-index: 10;
@@ -44,7 +44,8 @@ header .logout span {
 header .logo {
   color: white;
   text-decoration: none;
-  padding: .5% 1%;
+  padding: .5rem 1rem;
+  font-family: 'capsuularegular';
 }
 
 .container {
@@ -63,6 +64,28 @@ header .logo {
   max-width: 40%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.feed-items {
+  margin:0;
+  padding: 0;
+}
+
+.feed-item {
+  list-style-type: none;
+  height: 2.5rem;
+  font-size: 1rem;
+  padding: .5rem;
+  margin-bottom: 1rem;
+  border: 0.1rem dashed #FFF546;
+  border-radius: 2rem;
+}
+
+.feed-item .react-gravatar {
+  /*padding:.5rem;
+  background: #FFED06;
+  margin-top: -0.5rem;
+  margin-left: -0.5rem;*/
 }
 
 .checkin-item {
@@ -92,7 +115,59 @@ header .logo {
   margin-left: .5rem;
   background-color: #AAAAAA;
   height: 2.5rem;
-  /*margin-top: .3rem;*/
+}
+
+@-moz-keyframes whirly-loader {
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes whirly-loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes whirly-loader {
+  0% {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  text-align: center;
+}
+
+.icon-spinner2:not(:required) {
+  position: relative;
+  display: inline-block;
+  background: transparent;
+  -moz-animation: whirly-loader 1.25s infinite linear;
+  -webkit-animation: whirly-loader 1.25s infinite linear;
+  animation: whirly-loader 1.25s infinite linear;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  color: #22A022;
 }
 
 nav {
@@ -115,14 +190,11 @@ nav {
 .nav-button {
   text-decoration: none;
   display: inline-block;
-  padding: .5%;
-  margin: .5%;
+  padding: .2rem;
+  margin: .2rem;
   border-left: 0.0625rem solid #aaa9aa;
   border-right: 0.0625rem solid #aaa9aa;
-  border-top-left-radius: 40%;
-  border-bottom-left-radius: 40%;
-  border-top-right-radius: 40%;
-  border-bottom-right-radius: 40%;
+  border-radius: 2.5rem;
   box-shadow: 0.0625rem 0.0625rem 0.3125rem #999;
   color: #22A022;
   width: 5rem;

@@ -5,11 +5,7 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: {
-        name: '',
-        email: '',
-        checkins: []
-      },
+      user: null,
       transactions: []
     }
   }
@@ -29,12 +25,21 @@ export default class Profile extends React.Component {
     const charity_total = this.state.transactions.reduce(function(total, transaction) {
       return total + parseInt(transaction.sum, 10);
     }, 0)
-    
-    return <div>
-      
-      <h3>{this.state.user.email ? <Gravatar email={this.state.user.email} https /> : ''} {this.state.user.name}</h3>
-      <p>{this.state.user.checkins.length} checkins</p>
-      <p>Total donations gathered: {charity_total / 100}€</p>
-    </div>
+
+    let content
+    if (!this.state.user) {
+      content = (<div className="loading"><span className="icon-spinner2" /></div>)
+    } else {
+      content = (
+        <div>
+
+          <h3>{this.state.user.email ? <Gravatar email={this.state.user.email} https /> : ''} {this.state.user.name}</h3>
+          <p>{this.state.user.checkins.length} checkins</p>
+          <p>Total donations gathered: {charity_total / 100}€</p>
+        </div>
+      )
+    }
+
+    return content
   }
 }

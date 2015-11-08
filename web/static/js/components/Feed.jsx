@@ -26,11 +26,21 @@ export default class Feed extends React.Component {
   }
 
   render() {
-    return <div>
-      <h4>Whats going on:</h4>
-      {this.state.feed.map((f) => {
-        return <p>{f.email ? <Gravatar md5={f.email} https /> : ""} {f.name} - {f.location} - {f.target} - {f.sum / 100}</p>
-      })}
-    </div>
+    let content
+    if (this.state.feed.length === 0) {
+      content = (<div className="loading"><span className="icon-spinner2" /></div>)
+    } else {
+      content = (
+        <div>
+          <h4>Whats going on:</h4>
+          <ul className="feed-items">
+          {this.state.feed.map((f, i) => {
+            return <li className="feed-item" key={i}>{f.email ? <Gravatar md5={f.email} https /> : ''} {f.name} - {f.location} - {f.target} - {f.sum / 100}</li>
+          })}
+        </ul>
+        </div>
+      )
+    }
+    return content
   }
 }
