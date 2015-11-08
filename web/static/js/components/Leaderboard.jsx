@@ -33,7 +33,7 @@ export default class Leaderboard extends React.Component {
   render() {
     return <div>
       <h2>This is the Leaderboard</h2>
-      {this.state.users.map((user, index) => <LeaderboardRow key={index} user={user} position={index} />)}
+      {this.state.users.slice(0,10).map((user, index) => <LeaderboardRow key={index} user={user} position={index} />)}
     </div>
   }
 }
