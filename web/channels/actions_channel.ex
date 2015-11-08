@@ -99,7 +99,7 @@ defmodule Donator.ActionsChannel do
 
         Logger.debug "#{inspect user}"
         Logger.debug "#{inspect transactions}"
-        push socket, "user", %{user: user, transactions: transactions}
+        push socket, "user", %{"user": user, "transactions": transactions}
     end
 
     error = fn e ->
@@ -125,7 +125,7 @@ defmodule Donator.ActionsChannel do
     template = donor.templates |> List.first
     target = TargetRepository.find_one_by_id template["target_id"]
 
-    push socket, "donor", %{donor: donor, target: target}
+    push socket, "donor", %{"donor": donor, "target": target}
     {:noreply, socket}
   end
 
