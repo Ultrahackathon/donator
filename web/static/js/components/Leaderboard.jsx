@@ -45,7 +45,7 @@ export class LeaderboardRow extends React.Component {
 
   render() {
     return <div>
-      <b>{this.props.user.name} {this.props.user.checkin_count} Checkins</b>
+      <strong>{this.props.user.name}</strong> with <em>{this.props.user.checkin_count}</em> checkins.
     </div>
   }
 }

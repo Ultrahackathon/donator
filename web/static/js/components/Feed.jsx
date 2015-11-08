@@ -35,7 +35,7 @@ export default class Feed extends React.Component {
           <h4>Whats going on:</h4>
           <ul className="feed-items">
           {this.state.feed.map((f, i) => {
-            return <li className="feed-item" key={i}>{f.email ? <Gravatar md5={f.email} https /> : ''} {f.name} - {f.location} - {f.target} - {f.sum / 100}</li>
+            return <li className="feed-item" key={i}>{f.email ? <Gravatar md5={f.email} https /> : ''} <strong>{f.name}</strong> at <em>{f.location}</em>. <small>Donation of {f.sum / 100} € to <em>{f.target}</em></small></li>
           })}
         </ul>
         </div>
