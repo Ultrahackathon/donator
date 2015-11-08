@@ -17,9 +17,6 @@ config :donator, Donator.Endpoint,
   url: [host: "still-caverns-5246.herokuapp.com"],
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
-# Do not print debug messages in production
-#config :logger, level: :info
-
 config :donator, Donator.Repo,
   url: System.get_env("MONGOLAB_URI")
 
