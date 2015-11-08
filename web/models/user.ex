@@ -107,7 +107,13 @@ defmodule Donator.UserRepository do
     def get_leaderboard do
       find_all
       |> Enum.map(fn user ->
-        %{id: user.id, name: user.name, checkin_count: Enum.count(user.checkins)}
+        name = user.name
+        if (String.contains? name, " ") do
+          [full, first, initial] = Regex.scan(~r/(.*) (.).*/, name) |> List.flatten
+          name = "#{first} #{initial}."
+        end
+
+        %{id: user.id, name: name, checkin_count: Enum.count(user.checkins)}
       end)
       |> Enum.sort(fn a, b -> a.checkin_count > b.checkin_count end)
     end
