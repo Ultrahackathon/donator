@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from 'react-modal'
+import { Link } from 'react-router'
 
 const customStyles = {
   content : {
@@ -19,7 +20,7 @@ export default class CheckIn extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      geolocation: ['Loading...'],
+      geolocation: [],
       locations: [],
       modalIsOpen: false,
       selectedLocation: null
@@ -62,7 +63,7 @@ export default class CheckIn extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextState.geolocation !== this.state.geolocation || nextState.locations !== this.state.locations || nextState.modalIsOpen !== this.state.modalIsOpen
+    return this.props !== nextProps || this.state !== nextState
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -104,11 +105,12 @@ export default class CheckIn extends React.Component {
       </Modal>)
     }
     if (this.state.locations.length === 0) {
-      content = (<div className="loading"><span className="icon-spinner2" /></div>)
+      content = (<div className="loading"><span className="icon-spinner2" /><Link to="qr" >Check-in with QR Code</Link></div>)
     } else {
       content = (
         <div>
           <span style={{display: 'none'}}>{this.state.geolocation.join(',')}</span>
+          <Link to="qr" >Check-in with QR Code</Link>
           <ul>
             {this.state.locations.map( (loc) => {
               return <li className="item checkin-item" key={loc.venue.id}><a onClick={this.openModal.bind(this, loc)}><img className="foursquare-icon" src={loc.venue.categories[0].icon.prefix + '88' + loc.venue.categories[0].icon.suffix} />{loc.venue.name}</a></li>
