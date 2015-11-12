@@ -65,6 +65,15 @@ body {
   padding-bottom: 6rem;
 }
 
+.container .content > p{
+  color: red;
+  text-align: center;
+}
+header > .contact {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+}
 .container .content > div {
   max-width: 35rem;
   margin-left: auto;

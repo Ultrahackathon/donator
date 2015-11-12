@@ -63,7 +63,9 @@ export default class DonatorApp extends React.Component {
     return (
       <div>
         <Header isAuthenticated={this.state.isAuthenticated} logout={this.logout} />
+
         <div className="content">
+          <p>DEMO. No real money involved!</p>
           {this.props.children && React.cloneElement(this.props.children, { channel: this.state.channel, isAuthenticated: this.state.isAuthenticated })}
         </div>
         <Navigation />
