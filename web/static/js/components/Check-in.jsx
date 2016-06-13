@@ -111,7 +111,7 @@ export default class CheckIn extends React.Component {
           <span style={{display: 'none'}}>{this.state.geolocation.join(',')}</span>
           <ul>
             {this.state.locations.map( (loc) => {
-              return <li className="checkin-item" key={loc.venue.id}><a onClick={this.openModal.bind(this, loc)}><img className="foursquare-icon" src={loc.venue.categories[0].icon.prefix + '88' + loc.venue.categories[0].icon.suffix} />{loc.venue.name}</a></li>
+              return <li className="item checkin-item" key={loc.venue.id}><a onClick={this.openModal.bind(this, loc)}><img className="foursquare-icon" src={loc.venue.categories[0].icon.prefix + '88' + loc.venue.categories[0].icon.suffix} />{loc.venue.name}</a></li>
             })}
           </ul>
           {modal}

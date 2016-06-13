@@ -9,6 +9,7 @@ export default class Header extends React.Component {
     }
     return (
       <header>
+        <a className="contact" href="mail:contact@donator.io">contact@donator.io</a>
         {logout}
         <Link className="logo" to="/"><h1>donator</h1></Link>
       </header>)

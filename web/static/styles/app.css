@@ -48,6 +48,11 @@ header .logo {
   font-family: 'capsuularegular';
 }
 
+body {
+  background:url(../images/skyline.png) bottom right no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
 .container {
   margin: auto;
   width: 100%;
@@ -60,10 +65,23 @@ header .logo {
   padding-bottom: 6rem;
 }
 
+.container .content > p{
+  color: red;
+  text-align: center;
+}
+header > .contact {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+}
 .container .content > div {
   max-width: 35rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.item {
+  background-color: rgba(255,255,255,0.5);
 }
 
 .feed-items {
@@ -82,6 +100,7 @@ header .logo {
 }
 
 .feed-item .react-gravatar {
+  margin-right: 1rem;
   /*padding:.5rem;
   background: #FFED06;
   margin-top: -0.5rem;
@@ -92,12 +111,12 @@ header .logo {
     list-style-type: none;
     height: 3rem;
     font-size: 1.5rem;
-    background-color: #FFF546;
+    background-color: rgba(255, 245, 70, .8);
     margin-bottom: 1rem;
     border-radius: 1rem;
 }
 .checkin-item:nth-of-type(2n+1) {
-  background-color: #FFED06;
+  background-color: rgba(255, 237, 6, .8);
 }
 
 .checkin-item a {
@@ -116,6 +135,10 @@ header .logo {
   background-color: #AAAAAA;
   height: 2.5rem;
   margin-bottom: .2rem;
+}
+
+.icon.disabled > span {
+  color: #eee;
 }
 
 @-moz-keyframes whirly-loader {
@@ -181,11 +204,11 @@ nav {
   border-top-right-radius: 95%;
   position: fixed;
   bottom: 0;
-  background: #FFF546;
   text-align: center;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  background-color: rgba(255, 245, 70, .8);
 }
 
 .nav-button {
