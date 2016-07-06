@@ -43,8 +43,14 @@ defmodule Donator.DonorRepository do
       query = from donor in Donor,
               where: fragment("templates": ["$elemMatch": ["location": ^location_id]]),
               select: {donor.id, donor.name,fragment("templates": ["$elemMatch": ["location": ^location_id]])}
-
-      {id, name, templates} = Repo.one(query)
+      donor = Repo.one(query)
+      IO.puts "#{inspect donor}"
+      id = nil
+      name = nil
+      templates = Dict.put(%{}, "templates", [])
+      if donor do
+        {id, name, templates} = donor
+      end
       %{"id": id, "name": name, "templates": templates["templates"]}
     end
 
