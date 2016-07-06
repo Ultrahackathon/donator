@@ -1,0 +1,15 @@
+---
+version: '2'
+services:
+  login-api:
+    build:
+      context: ./api/login-api
+      dockerfile: Dockerfile
+    volumes:
+      - ./api/login-api:/opt/login-api
+    links:
+      - db
+  db:
+    image: postgres
+    volumes:
+      - ./data:/var/lib/postgresql
