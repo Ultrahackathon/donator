@@ -1,4 +1,4 @@
-FROM ubuntu:15.04
+FROM ubuntu:16.04
 
 # Use en_US.UTF-8 as locale
 RUN locale-gen en_US.UTF-8
@@ -18,10 +18,6 @@ RUN apt-get install -y erlang
 WORKDIR /tmp/elixir-build
 RUN git clone https://github.com/elixir-lang/elixir.git
 WORKDIR elixir
-RUN git checkout v1.1.0 && make && make install
-
-# Install nodejs
-RUN apt-get install -y nodejs npm
-RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 1
+RUN git checkout v1.3.1 && make && make install
 
 RUN apt-get autoremove; apt-get autoclean
