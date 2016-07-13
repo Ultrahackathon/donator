@@ -32,6 +32,7 @@ defmodule LoginApi.Mixfile do
   defp deps do
     [{:cowboy, "~> 1.0.0"},
      {:plug, "~> 1.0"},
-     {:remix, "~> 0.0.1", only: :dev}]
+     {:remix, "~> 0.0.1", only: :dev},
+     {:exrm, "~> 1.0.0"}]
   end
 end

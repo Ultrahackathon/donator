@@ -1,7 +1,7 @@
 ---
 version: '2'
 services:
-  login-api:
+  login_api:
     build:
       context: ./api/login_api
       dockerfile: Dockerfile
@@ -9,6 +9,8 @@ services:
       - ./api/login_api:/opt/login_api
     links:
       - db
+    ports:
+      - "4001:4001"
   db:
     image: postgres
     volumes:
