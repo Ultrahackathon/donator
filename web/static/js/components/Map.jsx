@@ -1,5 +1,5 @@
 import React from 'react';
-import {GoogleMap, Marker} from "react-google-maps";
+import {GoogleMap, GoogleMapLoader, Marker} from 'react-google-maps';
 
 export default class Map extends React.Component {
 
@@ -36,22 +36,30 @@ export default class Map extends React.Component {
 
   render() {
     return (
-   <div>
-      <GoogleMap containerProps={{
-          ...this.props,
-          className: "google-maps"
-        }}
-        ref="map"
-        defaultZoom={14}
-        center={{lat: this.state.geolocation[0], lng: this.state.geolocation[1]}}
-        >
-        {this.state.markers.map((marker, index) => {
-          return (
-            <Marker
-              {...marker} />
-          );
-        })}
-      </GoogleMap></div>
+      <div>
+        <GoogleMapLoader
+          containerElement={
+            <div
+              {...this.props}
+              className="google-maps"
+            />
+          }
+          googleMapElement={
+            <GoogleMap
+              ref={map}
+              defaultZoom={14}
+              defaultCenter={{lat: this.state.geolocation[0], lng: this.state.geolocation[1]}}
+              >
+              {this.state.markers.map((marker, index) => {
+                return (
+                  <Marker
+                    {...marker} />
+                );
+              })}
+            </GoogleMap>
+          }
+        />
+      </div>
     );
 
   }
