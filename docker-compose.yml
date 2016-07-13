@@ -3,10 +3,10 @@ version: '2'
 services:
   login-api:
     build:
-      context: ./api/login-api
+      context: ./api/login_api
       dockerfile: Dockerfile
     volumes:
-      - ./api/login-api:/opt/login-api
+      - ./api/login_api:/opt/login_api
     links:
       - db
   db:
