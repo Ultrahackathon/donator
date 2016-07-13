@@ -1,7 +1,8 @@
 import React from 'react'
 import Gravatar from 'react-gravatar'
+import { withRouter } from 'react-router'
 
-export default class Profile extends React.Component {
+class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -12,7 +13,7 @@ export default class Profile extends React.Component {
 
   componentWillMount() {
     if (!this.props.isAuthenticated) {
-      this.props.history.replaceState(null, '/signin')
+      this.props.router.replace('/signin')
     } else {
       this.props.channel.on('user', payload => {
         this.setState(payload)
@@ -43,3 +44,5 @@ export default class Profile extends React.Component {
     return content
   }
 }
+
+export default withRouter(Profile)

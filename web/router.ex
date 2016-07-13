@@ -13,17 +13,17 @@ defmodule Donator.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Donator do
-    pipe_through :browser # Use the default browser stack
-
-    get "/", PageController, :index
-  end
-
   scope "/auth", Donator do
     pipe_through :browser
 
     get "/:provider", AuthController, :index
     get "/:provider/callback", AuthController, :callback
+  end
+
+  scope "/", Donator do
+    pipe_through :browser # Use the default browser stack
+
+    get "/*foo", PageController, :index
   end
 
   # Other scopes may use custom stacks.

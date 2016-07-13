@@ -5,9 +5,10 @@ import { Link } from 'react-router'
 import Header from './Header'
 import Navigation from './Navigation'
 import { Socket } from '../phoenix'
+import { withRouter } from 'react-router'
 
 
-export default class DonatorApp extends React.Component {
+class DonatorApp extends React.Component {
 
   constructor(props) {
     super(props)
@@ -37,7 +38,7 @@ export default class DonatorApp extends React.Component {
     }
 
     if (!this.state.isAuthenticated) {
-      this.props.history.pushState(null, '/signin')
+      this.props.router.push('/signin')
     }
   }
 
@@ -47,10 +48,10 @@ export default class DonatorApp extends React.Component {
 
   componentDidUpdate(prevProp, prevStat) {
     if (!this.state.isAuthenticated && this.props.location.pathname !== '/signin') {
-      this.props.history.pushState(null, '/signin')
+      this.props.router.push('/signin')
     }
     if (this.state.isAuthenticated && this.props.location.pathname === '/') {
-      this.props.history.pushState(null, '/feed')
+      this.props.router.push('/feed')
     }
   }
 
@@ -73,3 +74,5 @@ export default class DonatorApp extends React.Component {
     );
   }
 }
+
+export default withRouter(DonatorApp)

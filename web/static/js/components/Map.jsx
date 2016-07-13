@@ -1,7 +1,8 @@
 import React from 'react';
 import {GoogleMap, GoogleMapLoader, Marker} from 'react-google-maps';
+import { withRouter } from 'react-router'
 
-export default class Map extends React.Component {
+class Map extends React.Component {
 
   constructor(props) {
     super(props)
@@ -14,7 +15,7 @@ export default class Map extends React.Component {
 
   componentWillMount() {
     if (!this.props.isAuthenticated) {
-      this.props.history.replaceState(null, '/signin')
+      this.props.router.replace('/signin')
     } else {
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition( (pos) => {
@@ -64,3 +65,5 @@ export default class Map extends React.Component {
 
   }
 }
+
+export default withRouter(Map)

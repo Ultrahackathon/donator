@@ -1,15 +1,16 @@
 import React from 'react';
 import Login from './Login'
+import { withRouter } from 'react-router'
 
-export default class SignIn extends React.Component {
+class SignIn extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { location } = this.props
 
     if (location.state && location.state.nextPathname) {
-      this.props.history.replaceState(null, location.state.nextPathname)
+      this.props.router.replace(location.state.nextPathname)
     } else {
-      this.props.history.replaceState(null, '/feed')
+      this.props.router.replace('/feed')
     }
   }
 
@@ -22,3 +23,5 @@ export default class SignIn extends React.Component {
     )
   }
 }
+
+export default withRouter(SignIn)

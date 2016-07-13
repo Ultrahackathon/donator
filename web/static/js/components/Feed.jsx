@@ -1,7 +1,8 @@
 import React from 'react'
 import Gravatar from 'react-gravatar'
+import { withRouter } from 'react-router'
 
-export default class Feed extends React.Component {
+class Feed extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -11,7 +12,7 @@ export default class Feed extends React.Component {
 
   componentWillMount() {
     if (!this.props.isAuthenticated) {
-      this.props.history.replaceState(null, '/signin')
+      this.props.router.replace('/signin')
     }
   }
 
@@ -44,3 +45,5 @@ export default class Feed extends React.Component {
     return content
   }
 }
+
+export default withRouter(Feed)

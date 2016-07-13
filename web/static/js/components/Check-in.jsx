@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router'
 import Modal from 'react-modal'
 
 const customStyles = {
@@ -13,8 +14,7 @@ const customStyles = {
   }
 }
 
-
-export default class CheckIn extends React.Component {
+class CheckIn extends React.Component {
 
   constructor(props) {
     super(props)
@@ -24,14 +24,11 @@ export default class CheckIn extends React.Component {
       modalIsOpen: false,
       selectedLocation: null
     }
-
-
-
   }
 
   componentWillMount() {
     if (!this.props.isAuthenticated) {
-      this.props.history.replaceState(null, '/signin')
+      this.props.router.replace('/signin')
     } else {
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition( (pos) => {
@@ -121,3 +118,5 @@ export default class CheckIn extends React.Component {
     return content
   }
 }
+
+export default withRouter(CheckIn)

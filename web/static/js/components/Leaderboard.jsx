@@ -1,6 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router'
 
-export default class Leaderboard extends React.Component {
+class Leaderboard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -10,7 +11,7 @@ export default class Leaderboard extends React.Component {
 
   componentWillMount() {
     if (!this.props.isAuthenticated) {
-      this.props.history.replaceState(null, '/signin')
+      this.props.router.replace('/signin')
     } else {
       this.props.channel.push('leaderboard')
     }
@@ -49,3 +50,5 @@ export class LeaderboardRow extends React.Component {
     </div>
   }
 }
+
+export default withRouter(Leaderboard)
