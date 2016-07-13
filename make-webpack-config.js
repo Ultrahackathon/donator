@@ -33,7 +33,7 @@ function loadersByExtension(obj) {
 
 module.exports = function(options) {
   var entry = {
-    bundle: './web/static/js/app.js'
+    bundle: './web/static/js/app.jsx'
   };
 
   var output = {
@@ -41,10 +41,13 @@ module.exports = function(options) {
   }
 
   var loaders = {
-    'jsx': options.hotComponents ? ['react-hot-loader', 'babel-loader?stage=0'] : 'babel-loader?stage=0',
-    'js': {
-      loader: 'babel-loader?stage=0',
-      include: path.join(__dirname, 'web')
+    'jsx?': {
+      loader: 'babel',
+      exclude: /(node_modules|bower_components)/,
+      query: {
+        cacheDirectory: true,
+        presets: ['es2015', 'react', 'stage-2']
+      }
     },
     'json': 'json-loader',
     'coffee': 'coffee-redux-loader',
