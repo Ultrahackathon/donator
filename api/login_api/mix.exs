@@ -18,7 +18,7 @@ defmodule LoginApi.Mixfile do
   end
 
   defp applications(:dev), do: applications(:all) ++ [:remix]
-  defp applications(_all), do: [:logger, :cowboy, :plug]
+  defp applications(_all), do: [:logger, :cowboy, :plug, :postgrex, :ecto]
 
   # Dependencies can be Hex packages:
   #
@@ -33,6 +33,8 @@ defmodule LoginApi.Mixfile do
     [{:cowboy, "~> 1.0.0"},
      {:plug, "~> 1.0"},
      {:remix, "~> 0.0.1", only: :dev},
-     {:exrm, "~> 1.0.0"}]
+     {:exrm, "~> 1.0.0"},
+     {:postgrex, ">= 0.0.0"},
+     {:ecto, "~> 2.0.0"}]
   end
 end

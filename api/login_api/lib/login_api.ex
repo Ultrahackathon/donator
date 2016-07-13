@@ -10,7 +10,8 @@ defmodule LoginApi do
     children = [
       # Starts a worker by calling: LoginApi.Worker.start_link(arg1, arg2, arg3)
       # worker(LoginApi.Worker, [arg1, arg2, arg3]),
-      Plug.Adapters.Cowboy.child_spec(:http, LoginApiRouter, [], [port: 4001])
+      Plug.Adapters.Cowboy.child_spec(:http, LoginApiRouter, [], [port: 4001]),
+      supervisor(Donator.Repo, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

@@ -5,6 +5,16 @@ use Mix.Config
 config :remix,
   escript: true
 
+config :login_api,
+  ecto_repos: [Donator.Repo]
+
+config :login_api, Donator.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "donator",
+  username: "postgres",
+  password: "postgres",
+  hostname: "db"
+
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
 # file won't be loaded nor affect the parent project. For this reason,
